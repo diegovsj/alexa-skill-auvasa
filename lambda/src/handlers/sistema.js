@@ -8,7 +8,7 @@ const catalogo = require('../services/catalogo');
 const textos = require('../i18n/es');
 const comun = require('./comun');
 const { respuestaLineasEnParada } = require('./consultas');
-const { guardarFavorita } = require('./favorita');
+const { guardarFavorita, guardarSugeridos } = require('./favorita');
 
 const LanzamientoHandler = {
   canHandle(handlerInput) {
@@ -93,13 +93,13 @@ const SiIntentHandler = {
     const pendiente = comun.leerPendiente(handlerInput);
     if (pendiente) return ejecutarPendiente(handlerInput, pendiente);
 
-    // El usuario acepta guardar la parada que acabamos de consultar.
+    // El usuario acepta guardar la parada y/o la línea que acabamos de consultar.
     const atributos = handlerInput.attributesManager.getSessionAttributes();
     if (atributos.favoritaSugerida) {
-      const parada = catalogo.paradaPorId(atributos.favoritaSugerida.id);
+      const sugerida = atributos.favoritaSugerida;
       delete atributos.favoritaSugerida;
       handlerInput.attributesManager.setSessionAttributes(atributos);
-      if (parada) return guardarFavorita(handlerInput, parada);
+      return guardarSugeridos(handlerInput, sugerida);
     }
 
     return handlerInput.responseBuilder

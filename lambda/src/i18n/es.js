@@ -10,13 +10,13 @@ const { escaparSsml } = require('../util/texto');
 module.exports = {
   codigo: 'es-ES',
 
-  nombre: 'AUVASA',
+  nombre: 'Bus Valladolid',
 
-  bienvenidaConFavorita: 'Hola, bienvenido a AUVASA.',
+  bienvenidaConFavorita: 'Hola, bienvenido a Bus Valladolid (AUVASA).',
 
-  bienvenidaSinFavorita: 'Hola, bienvenido a AUVASA, el bus de Valladolid. Dime una parada, por su nombre '
-    + 'o por su número, y te digo cuándo llega el próximo autobús. También puedes guardar tu parada y '
-    + 'tu línea favoritas.',
+  bienvenidaSinFavorita: 'Hola, bienvenido a Bus Valladolid (AUVASA). Dime una parada, por su nombre '
+    + 'o por su número, y te digo cuándo llega el próximo autobús. También puedes guardar tu parada '
+    + 'y tu línea favoritas.',
 
   ayuda: 'Puedes decir la parada por su nombre o por su número: por ejemplo, ¿cuándo pasa el próximo '
     + 'autobús en la parada 545? También puedes preguntar qué líneas pasan por una parada, pedir el '
@@ -88,7 +88,12 @@ module.exports = {
   favoritaActual: (etiqueta) => `Tu parada favorita es la parada ${escaparSsml(etiqueta)}.`,
   favoritaOlvidada: 'He borrado tu parada favorita.',
   sugerirFavorita: '¿Quieres guardarla como tu parada favorita?',
+  sugerirLineaFavorita: (codigo) => `¿Quieres guardar la línea ${escaparSsml(codigo)} como tu línea favorita?`,
+  sugerirParadaYLinea: (codigo) => `¿Quieres guardar esta parada y la línea ${escaparSsml(codigo)} `
+    + 'como favoritas?',
   sugerirFavoritaNo: 'De acuerdo.',
+  favoritasGuardadas: (etiqueta, codigo) => `He guardado la parada ${escaparSsml(etiqueta)} y la línea `
+    + `${escaparSsml(codigo)} como favoritas.`,
 
   lineaFavoritaGuardada: (codigo) => `He guardado la línea ${escaparSsml(codigo)} como tu línea favorita.`,
   lineaFavoritaGuardadaConAviso: (codigo, etiqueta) => `He guardado la línea ${escaparSsml(codigo)} como tu `

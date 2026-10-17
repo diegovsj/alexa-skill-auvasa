@@ -146,7 +146,7 @@ const CASO_NUMERO = await paradaTresDigitosConServicio();
 
 test('el lanzamiento da la bienvenida y no cierra la sesión', async () => {
   const { habla, fin } = await decir(peticionLanzamiento('amzn1.ask.account.nuevousuario'));
-  assert.match(habla, /bienvenido a AUVASA/i);
+  assert.match(habla, /bienvenido a Bus Valladolid/i);
   assert.match(habla, /parada/i);
   assert.equal(fin, false);
 });
@@ -281,7 +281,7 @@ test('al abrir con parada favorita da directamente las llegadas', async () => {
   await decir(peticionIntent('GuardarParadaFavoritaIntent', { parada: parada.nombre }, usuario));
 
   const { habla } = await decir(peticionLanzamiento(usuario));
-  assert.match(habla, /^Hola, bienvenido a AUVASA\. /);
+  assert.match(habla, /^Hola, bienvenido a Bus Valladolid \(AUVASA\)\. /);
   assert.match(habla, new RegExp(`Parada ${parada.codigo} en `));
 });
 
@@ -366,7 +366,7 @@ test('si no hay favorita, ofrece guardar la parada y acepta el sí', async () =>
   // El servicio de Alexa conserva los atributos de sesión entre turnos; aquí
   // los simulamos para probar el "sí".
   const si = await decir(peticionIntent('AMAZON.YesIntent', {}, usuario, {
-    favoritaSugerida: { id: parada.id },
+    favoritaSugerida: { paradaId: parada.id },
   }));
   assert.match(si.habla, /He guardado la parada 1000 en Paseo Zorrilla 198 La Rubia como tu parada favorita/);
 });

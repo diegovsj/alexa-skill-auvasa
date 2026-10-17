@@ -210,25 +210,44 @@ async function responderLlegadas(handlerInput, parada, opciones = {}) {
   const sufijo = hayTiempoReal ? '' : textos.avisoSinTiempoReal;
 
   let reprompt = textos.repeticion;
-  if (sugerirFavorita && marcarFavoritaSugerida(handlerInput, parada)) {
-    extra += ` ${textos.sugerirFavorita}`;
-    reprompt = textos.sugerirFavorita;
+  const pregunta = textoPreguntaFavoritos(sugerirFavorita, linea);
+  if (pregunta && marcarFavoritaSugerida(handlerInput, {
+    paradaId: sugerirFavorita.parada ? parada.id : undefined,
+    lineaCodigo: sugerirFavorita.linea ? linea : undefined,
+  })) {
+    extra += ` ${pregunta}`;
+    reprompt = pregunta;
   }
 
   return hablar(`${textos.tituloLlegadas(etiqueta)} ${cuerpo}${sufijo}${extra}`, reprompt);
 }
 
 /**
- * Plantea guardar una parada como favorita (solo una vez por sesión).
+ * Texto de la pregunta para guardar los favoritos que falten.
+ *
+ * @param {{parada?: boolean, linea?: boolean}|undefined} sugerirFavorita
+ * @param {string|undefined} linea
+ * @returns {string}
+ */
+function textoPreguntaFavoritos(sugerirFavorita, linea) {
+  if (!sugerirFavorita) return '';
+  if (sugerirFavorita.parada && sugerirFavorita.linea) return textos.sugerirParadaYLinea(linea);
+  if (sugerirFavorita.parada) return textos.sugerirFavorita;
+  if (sugerirFavorita.linea) return textos.sugerirLineaFavorita(linea);
+  return '';
+}
+
+/**
+ * Plantea guardar la parada y/o la línea como favoritas (una vez por sesión).
  *
  * @param {object} handlerInput
- * @param {object} parada
+ * @param {{paradaId?: string, lineaCodigo?: string}} sugerida
  * @returns {boolean}
  */
-function marcarFavoritaSugerida(handlerInput, parada) {
+function marcarFavoritaSugerida(handlerInput, sugerida) {
   const atributos = handlerInput.attributesManager.getSessionAttributes();
   if (atributos.favoritaPreguntada) return false;
-  atributos.favoritaSugerida = { id: parada.id };
+  atributos.favoritaSugerida = sugerida;
   atributos.favoritaPreguntada = true;
   handlerInput.attributesManager.setSessionAttributes(atributos);
   return true;

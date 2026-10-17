@@ -122,6 +122,37 @@ async function guardarLineaFavorita(handlerInput, linea) {
     .getResponse();
 }
 
+/**
+ * Guarda la parada y/o la línea que el usuario ha aceptado como favoritas.
+ *
+ * @param {object} handlerInput
+ * @param {{paradaId?: string, lineaCodigo?: string}} sugerida
+ * @returns {Promise<object>}
+ */
+async function guardarSugeridos(handlerInput, sugerida) {
+  const parada = sugerida.paradaId ? catalogo.paradaPorId(sugerida.paradaId) : undefined;
+  const linea = sugerida.lineaCodigo ? catalogo.lineaPorCodigo(sugerida.lineaCodigo) : undefined;
+
+  if (parada && linea) {
+    const atributos = await handlerInput.attributesManager.getPersistentAttributes();
+    atributos.paradaFavorita = { id: parada.id, codigo: parada.codigo, nombre: parada.nombre };
+    atributos.lineaFavorita = { codigo: linea.codigo, nombre: linea.nombre };
+    handlerInput.attributesManager.setPersistentAttributes(atributos);
+    await persistir(handlerInput);
+    return handlerInput.responseBuilder
+      .speak(textos.favoritasGuardadas(comun.etiquetaParada(parada), linea.codigo))
+      .reprompt(textos.repeticion)
+      .getResponse();
+  }
+  if (parada) return guardarFavorita(handlerInput, parada);
+  if (linea) return guardarLineaFavorita(handlerInput, linea);
+
+  return handlerInput.responseBuilder
+    .speak(textos.repeticion)
+    .reprompt(textos.repeticion)
+    .getResponse();
+}
+
 /** Consulta los próximos autobuses en la parada favorita. */
 const ConsultarParadaFavoritaIntentHandler = {
   canHandle(handlerInput) {
@@ -197,6 +228,7 @@ module.exports = {
   GuardarParadaFavoritaIntentHandler,
   guardarFavorita,
   GuardarLineaFavoritaIntentHandler,
+  guardarSugeridos,
   ConsultarParadaFavoritaIntentHandler,
   ConsultarLineaFavoritaIntentHandler,
   OlvidarParadaFavoritaIntentHandler,

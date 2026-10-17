@@ -48,6 +48,12 @@ El proyecto usa [Versionado Semántico](https://semver.org/lang/es/).
 - **Línea favorita** (opcional), además de la parada favorita: se guarda,
   consulta y olvida, y al abrir la skill se usa si pasa por la parada favorita.
 - Al añadir la línea favorita se avisa si no pasa por la parada favorita.
+- El **nombre** de la skill pasa a **«Bus Valladolid (AUVASA)»** y el saludo a
+  «Bienvenido a Bus Valladolid (AUVASA)».
+- Más **formulaciones** reconocidas («añade», «agrega … a favoritos», «… a mi
+  favorita», «a mis favoritas»…).
+- Al consultar una parada o una línea, si faltan favoritos la skill **ofrece
+  guardarlos** (la parada, la línea o ambas, según lo que falte).
 - El handler de salida cierra la sesión explícitamente.
 - El simulador y las pruebas desenvuelven el texto SSML del SDK.
 

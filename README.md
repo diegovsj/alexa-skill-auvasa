@@ -1,4 +1,4 @@
-# AUVASA — Skill de Alexa para los autobuses urbanos de Valladolid
+# Bus Valladolid (AUVASA) — Skill de Alexa para los autobuses urbanos
 
 <p align="center">
   <img src="docs/images/logo-512.png" alt="AUVASA" width="200">
@@ -18,7 +18,7 @@ tener en cuenta los retrasos.
 
 ## ¿Qué puede hacer?
 
-> **Nombre en la tienda:** «**AUVASA (Bus Valladolid)**». **Nombre de
+> **Nombre en la tienda:** «**Bus Valladolid (AUVASA)**». **Nombre de
 > invocación:** «**bus valladolid**», así que se abre diciendo «Alexa, abre bus
 > valladolid».
 

@@ -25,7 +25,13 @@ const ConsultarLlegadasIntentHandler = {
     // Sin parada (o "mi parada"): usamos la favorita si existe.
     if (!valorParada || comun.esMiParada(valorParada)) {
       const favorita = await comun.leerFavorita(handlerInput);
-      if (favorita) return comun.responderLlegadas(handlerInput, favorita, { linea });
+      if (favorita) {
+        const lineaFavorita = await comun.leerLineaFavorita(handlerInput);
+        return comun.responderLlegadas(handlerInput, favorita, {
+          linea,
+          sugerirFavorita: { parada: false, linea: Boolean(linea) && !lineaFavorita },
+        });
+      }
 
       return handlerInput.responseBuilder
         .speak(textos.sinParada)
@@ -47,9 +53,10 @@ const ConsultarLlegadasIntentHandler = {
     }
 
     const favorita = await comun.leerFavorita(handlerInput);
+    const lineaFavorita = await comun.leerLineaFavorita(handlerInput);
     return comun.responderLlegadas(handlerInput, resultado.parada, {
       linea,
-      sugerirFavorita: !favorita,
+      sugerirFavorita: { parada: !favorita, linea: Boolean(linea) && !lineaFavorita },
     });
   },
 };
@@ -109,7 +116,7 @@ function respuestaLineasEnParada(handlerInput, parada, opciones = {}) {
 
   let extra = '';
   let reprompt = textos.repeticion;
-  if (opciones.sugerirFavorita && comun.marcarFavoritaSugerida(handlerInput, parada)) {
+  if (opciones.sugerirFavorita && comun.marcarFavoritaSugerida(handlerInput, { paradaId: parada.id })) {
     extra = ` ${textos.sugerirFavorita}`;
     reprompt = textos.sugerirFavorita;
   }
