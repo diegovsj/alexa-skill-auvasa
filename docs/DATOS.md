@@ -184,7 +184,9 @@ servicio, pero **los horarios solo son exactos dentro del rango descargado**.
 ➡️ **Regenera los datos periódicamente**:
 
 ```bash
-npm run datos && npm run modelo && npm run iconos
+npm run datos && npm run modelo
 ```
 
 y vuelve a desplegar con `git push` (ver [`PUBLICACION.md`](PUBLICACION.md)).
+Los iconos de `assets/` no dependen de los datos, así que no hace falta
+regenerarlos.

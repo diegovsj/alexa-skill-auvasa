@@ -97,9 +97,9 @@ cd lambda && npm install && cd ..
 # 2. Variables de entorno (opcional en local: hay valores por defecto)
 cp .env.example .env
 
-# 3. Generar los datos, el modelo de voz y los iconos
-npm run preparar:offline     # usa el GTFS cacheado en tools/gtfs/
-# npm run preparar           # descarga el GTFS más reciente de AUVASA
+# 3. Generar los datos y el modelo de voz (los iconos ya vienen en el repo)
+npm run datos:offline && npm run modelo   # usa el GTFS cacheado en tools/gtfs/
+# npm run datos                            # descarga el GTFS más reciente de AUVASA
 
 # 4. Ejecutar las pruebas
 npm test
@@ -116,8 +116,8 @@ npm run simular -- --intent ConsultarLlegadasIntent --parada "550" --linea 8
 | --- | --- |
 | `npm run datos` / `npm run datos:offline` | Descarga y procesa el GTFS de AUVASA |
 | `npm run modelo` | Regenera el modelo de voz a partir de los datos |
-| `npm run iconos` | Regenera los iconos PNG de la skill |
-| `npm run preparar` / `npm run preparar:offline` | Los tres pasos anteriores en orden |
+| `npm run iconos` | Regenera (opcional) unos iconos PNG dibujados por código. **Sustituyen** los iconos actuales de `assets/` |
+| `npm run preparar` / `npm run preparar:offline` | Datos + modelo + iconos, en orden |
 | `npm test` | Suite de pruebas (`node:test`) |
 | `npm run simular -- …` | Envía peticiones falsas a la Lambda en local |
 | `npm run hospedada -- <ruta>` | Copia las fuentes a un proyecto Alexa‑hosted |
@@ -136,7 +136,7 @@ npm run simular -- --intent ConsultarLlegadasIntent --parada "550" --linea 8
 ├── .env.example               # Plantilla de variables de entorno
 ├── skill-package/             # Lo que se publica en Amazon
 │   ├── skill.json             # Ficha y manifiesto de la skill
-│   ├── assets/                # Iconos generados
+│   ├── assets/                # Iconos de la tienda (108×108 y 512×512)
 │   └── interactionModels/custom/es-ES.json   # Modelo de voz generado
 ├── lambda/                    # Backend (AWS Lambda)
 │   ├── index.js               # Punto de entrada
@@ -209,7 +209,8 @@ Las *pull requests* y los *issues* son bienvenidos. Antes de enviar cambios:
 
 1. Pasa las pruebas: `npm test` (37/37).
 2. Regenera los ficheros derivados si tocas los datos:
-   `npm run datos:offline && npm run modelo && npm run iconos`.
+   `npm run datos:offline && npm run modelo` (los iconos no dependen de los
+   datos, así que no hace falta regenerarlos).
 3. Mantén el estilo: comentarios y nombres de dominio en español, `lambda/` en
    CommonJS y `tools/`/`tests/` en ESM.
 4. Añade una prueba para cualquier cambio de comportamiento.

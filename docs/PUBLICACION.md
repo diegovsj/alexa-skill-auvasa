@@ -193,8 +193,8 @@ ser exactos.
 Pasos:
 
 ```bash
-# 1) Regenerar datos + modelo de voz + iconos
-npm run datos && npm run modelo && npm run iconos
+# 1) Regenerar datos + modelo de voz (los iconos no dependen de los datos)
+npm run datos && npm run modelo
 
 # 2) Comprobar que todo sigue bien
 npm test

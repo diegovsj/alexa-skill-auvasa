@@ -27,8 +27,10 @@ npm run simular -- --intent ConsultarLlegadasIntent --texto "zorrilla 198"
 2. **Regenera los ficheros derivados** si has tocado los datos o su
    generación:
    ```bash
-   npm run datos:offline && npm run modelo && npm run iconos
+   npm run datos:offline && npm run modelo
    ```
+   (Los iconos de `assets/` no dependen de los datos: `npm run iconos` genera
+   un diseño alternativo y sustituye los actuales.)
 3. **Mantén el estilo:** comentarios y nombres de dominio en español,
    `lambda/` en CommonJS y `tools/`/`tests/` en ESM (ver
    [Convenciones](#convenciones)).
