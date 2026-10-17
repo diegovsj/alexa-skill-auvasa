@@ -83,6 +83,12 @@ const INTENTS = [
       'cuando llega el proximo autobus a la parada numero {parada}',
       'a que hora llega el proximo autobus a la parada numero {parada}',
       'proximo autobus en la parada numero {parada}',
+      // Una línea concreta en la parada favorita ("mi parada").
+      'cuando pasa el {linea} por mi parada',
+      'cuando pasa el {linea} en mi parada',
+      'cuando llega el {linea} a mi parada',
+      'cuanto le queda al {linea} en mi parada',
+      'proximo {linea} en mi parada',
     ],
   },
   {
@@ -102,6 +108,9 @@ const INTENTS = [
       'que lineas paran en la parada {parada}',
       'lineas de la parada numero {parada}',
       'que lineas pasan por la parada numero {parada}',
+      'que lineas pasan por mi parada',
+      'que lineas tiene mi parada',
+      'que autobuses pasan por mi parada',
     ],
   },
   {
@@ -139,6 +148,55 @@ const INTENTS = [
       'mi parada favorita',
       'que parada tengo guardada',
       'recuerdame mi parada favorita',
+    ],
+  },
+  {
+    name: 'GuardarLineaFavoritaIntent',
+    slots: [{ name: 'linea', type: 'LINEA' }],
+    samples: [
+      'guarda la linea {linea} como mi linea favorita',
+      'mi linea favorita es la {linea}',
+      'configura la linea {linea} como mi linea favorita',
+      'quiero que mi linea favorita sea la {linea}',
+    ],
+  },
+  {
+    name: 'ConsultarLineaFavoritaIntent',
+    slots: [],
+    samples: [
+      'cual es mi linea favorita',
+      'que linea tengo guardada',
+      'mi linea favorita',
+      'recuerdame mi linea favorita',
+    ],
+  },
+  {
+    name: 'OlvidarParadaFavoritaIntent',
+    slots: [],
+    samples: [
+      'olvida mi parada favorita',
+      'quita mi parada favorita',
+      'borra mi parada favorita',
+    ],
+  },
+  {
+    name: 'OlvidarLineaFavoritaIntent',
+    slots: [],
+    samples: [
+      'olvida mi linea favorita',
+      'quita mi linea favorita',
+      'borra mi linea favorita',
+    ],
+  },
+  {
+    name: 'ConsultarRecorridoCompletoIntent',
+    slots: [{ name: 'linea', type: 'LINEA' }],
+    samples: [
+      'recorrido completo de la linea {linea}',
+      'dime el recorrido completo de la linea {linea}',
+      'todas las paradas de la linea {linea}',
+      'el recorrido entero de la linea {linea}',
+      'recorrido completo de la {linea}',
     ],
   },
   {

@@ -11,6 +11,7 @@ const Alexa = require('ask-sdk-core');
 const catalogo = require('../services/catalogo');
 const horarios = require('../services/horarios');
 const { describirLlegadas } = require('../util/voz');
+const { normalizar } = require('../util/texto');
 const textos = require('../i18n/es');
 
 const CLAVE_PENDIENTE = 'paradaPendiente';
@@ -29,6 +30,27 @@ function leerSlot(handlerInput, nombre) {
   } catch (error) {
     return undefined;
   }
+}
+
+/**
+ * Texto que identifica una parada: "545 en Calle Morena".
+ *
+ * @param {object} parada
+ * @returns {string}
+ */
+function etiquetaParada(parada) {
+  return `${parada.codigo} en ${parada.nombre}`;
+}
+
+/**
+ * ¿El usuario ha dicho "mi parada" (en lugar de un nombre o un número)?
+ *
+ * @param {string} valor
+ * @returns {boolean}
+ */
+function esMiParada(valor) {
+  if (!valor) return false;
+  return normalizar(valor).includes('mi parada');
 }
 
 /**
@@ -114,42 +136,48 @@ function pedirConfirmacion(handlerInput, resultado, accion) {
  *
  * @param {object} handlerInput
  * @param {object} parada
- * @param {{linea?: string, limite?: number}} [opciones]
+ * @param {{linea?: string, limite?: number, otrasLineas?: boolean, prefijo?: string}} [opciones]
  * @returns {Promise<object>}
  */
 async function responderLlegadas(handlerInput, parada, opciones = {}) {
+  const { linea, limite, otrasLineas, prefijo } = opciones;
+  const etiqueta = etiquetaParada(parada);
   const resultado = await horarios.proximasLlegadas(parada.id, {
-    linea: opciones.linea,
-    limite: opciones.limite ?? 3,
+    linea,
+    limite: limite ?? 3,
   });
 
+  const hablar = (texto) => handlerInput.responseBuilder
+    .speak(prefijo ? `${prefijo} ${texto}` : texto)
+    .reprompt(textos.repeticion)
+    .getResponse();
+
   if (resultado.aviso === 'lineaDesconocida') {
-    return handlerInput.responseBuilder
-      .speak(textos.lineaDesconocida(opciones.linea))
-      .reprompt(textos.repeticion)
-      .getResponse();
+    return hablar(textos.lineaDesconocida(linea));
   }
 
-  const cabecera = textos.tituloLlegadas(parada.nombre, parada.codigo);
+  // ¿La línea pedida presta servicio en esta parada?
+  if (linea) {
+    const conocida = catalogo.lineaPorCodigo(linea);
+    const pasa = conocida
+      && catalogo.lineasEnParada(parada.id).some((l) => l.codigo === conocida.codigo);
+    if (!pasa) return hablar(textos.lineaNoPasa(linea, etiqueta));
+  }
+
+  const extra = otrasLineas ? textos.otrasLineasEnParada : '';
 
   if (resultado.llegadas.length === 0) {
-    const mensaje = opciones.linea
-      ? textos.sinLlegadasLinea(opciones.linea, parada.nombre)
-      : textos.sinLlegadas(parada.nombre);
-    return handlerInput.responseBuilder
-      .speak(mensaje)
-      .reprompt(textos.repeticion)
-      .getResponse();
+    const mensaje = linea
+      ? textos.sinLlegadasLinea(linea, etiqueta)
+      : textos.sinLlegadas(etiqueta);
+    return hablar(`${mensaje}${extra}`);
   }
 
   const cuerpo = describirLlegadas(resultado.llegadas, textos);
   const hayTiempoReal = resultado.llegadas.some((l) => l.tiempoReal);
-  const sufijo = hayTiempoReal ? textos.llegadaTiempoReal : '';
+  const sufijo = hayTiempoReal ? '' : textos.avisoSinTiempoReal;
 
-  return handlerInput.responseBuilder
-    .speak(`${cabecera} ${cuerpo}${sufijo}`)
-    .reprompt(textos.repeticion)
-    .getResponse();
+  return hablar(`${textos.tituloLlegadas(etiqueta)} ${cuerpo}${sufijo}${extra}`);
 }
 
 /**
@@ -165,8 +193,34 @@ async function leerFavorita(handlerInput) {
   return catalogo.paradaPorId(guardada.id) || catalogo.paradaPorCodigo(guardada.codigo);
 }
 
+/**
+ * Recupera la línea favorita guardada por el usuario.
+ *
+ * @param {object} handlerInput
+ * @returns {Promise<object|undefined>}
+ */
+async function leerLineaFavorita(handlerInput) {
+  const atributos = await handlerInput.attributesManager.getPersistentAttributes();
+  const guardada = atributos.lineaFavorita;
+  if (!guardada) return undefined;
+  return catalogo.lineaPorCodigo(guardada.codigo);
+}
+
+/**
+ * ¿La línea presta servicio en esta parada?
+ *
+ * @param {object} parada
+ * @param {object} linea
+ * @returns {boolean}
+ */
+function lineaPasaPorParada(parada, linea) {
+  return catalogo.lineasEnParada(parada.id).some((l) => l.codigo === linea.codigo);
+}
+
 module.exports = {
   leerSlot,
+  etiquetaParada,
+  esMiParada,
   resolverParada,
   guardarPendiente,
   leerPendiente,
@@ -174,6 +228,8 @@ module.exports = {
   pedirConfirmacion,
   responderLlegadas,
   leerFavorita,
+  leerLineaFavorita,
+  lineaPasaPorParada,
   UMBRAL_CONFIANZA,
   CLAVE_PENDIENTE,
 };

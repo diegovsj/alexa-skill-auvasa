@@ -145,9 +145,9 @@ const CASO_NUMERO = await paradaTresDigitosConServicio();
 // ------------------------------------------------------------------- tests --
 
 test('el lanzamiento da la bienvenida y no cierra la sesión', async () => {
-  const { habla, fin } = await decir(peticionLanzamiento());
-  assert.match(habla, /bienvenida/i);
-  assert.match(habla, /Valladolid/i);
+  const { habla, fin } = await decir(peticionLanzamiento('amzn1.ask.account.nuevousuario'));
+  assert.match(habla, /bienvenido a AUVASA/i);
+  assert.match(habla, /parada/i);
   assert.equal(fin, false);
 });
 
@@ -160,7 +160,7 @@ test('la ayuda explica las consultas y menciona el número de parada', async () 
 test('se piden las llegadas por nombre de parada', async () => {
   const parada = catalogo.buscarParadas('Paseo Zorrilla 198 La Rubia', { limite: 1 })[0].parada;
   const { habla } = await decir(peticionIntent('ConsultarLlegadasIntent', { parada: parada.nombre }));
-  assert.match(habla, /^Parada Paseo Zorrilla 198 La Rubia, número 1000\./);
+  assert.match(habla, /^Parada 1000 en Paseo Zorrilla 198 La Rubia\./);
   assert.match(habla, /hacia/);
 });
 
@@ -170,7 +170,7 @@ test('se piden las llegadas por número de parada', async () => {
   const { habla } = await decir(peticionIntent('ConsultarLlegadasIntent', {
     parada: String(CASO_NUMERO.parada.codigo),
   }));
-  assert.match(habla, new RegExp(`número ${CASO_NUMERO.parada.codigo}\\.`));
+  assert.match(habla, new RegExp(`^Parada ${CASO_NUMERO.parada.codigo} en `));
   assert.match(habla, /hacia/);
 });
 
@@ -181,7 +181,7 @@ test('se piden las llegadas por número de parada y línea concreta', async () =
     parada: String(CASO_NUMERO.parada.codigo),
     linea: CASO_NUMERO.linea,
   }));
-  assert.match(habla, new RegExp(`número ${CASO_NUMERO.parada.codigo}\\.`));
+  assert.match(habla, new RegExp(`^Parada ${CASO_NUMERO.parada.codigo} en `));
   assert.ok(
     habla.includes(`El ${CASO_NUMERO.linea} hacia`) || habla.includes(`La ${CASO_NUMERO.linea} hacia`),
     `respuesta inesperada: ${habla}`,
@@ -255,4 +255,99 @@ test('sin parada y sin favorita se pide una parada', async () => {
   const usuario = 'amzn1.ask.account.sinparada';
   const { habla } = await decir(peticionIntent('ConsultarLlegadasIntent', {}, usuario));
   assert.match(habla, /Dime el nombre o el número de la parada/);
+});
+
+/**
+ * Devuelve una línea con servicio real en una parada a la hora de referencia.
+ *
+ * @param {object} parada
+ * @returns {Promise<object|undefined>}
+ */
+async function lineaConServicio(parada) {
+  for (const linea of catalogo.lineasEnParada(parada.id)) {
+    const resultado = await horarios.proximasLlegadas(parada.id, {
+      referencia: REFERENCIA,
+      linea: linea.codigo,
+      limite: 1,
+    });
+    if (resultado.llegadas.length > 0) return linea;
+  }
+  return undefined;
+}
+
+test('al abrir con parada favorita da directamente las llegadas', async () => {
+  const usuario = 'amzn1.ask.account.lanzamientoparada';
+  const parada = catalogo.buscarParadas('Paseo Zorrilla 198 La Rubia', { limite: 1 })[0].parada;
+  await decir(peticionIntent('GuardarParadaFavoritaIntent', { parada: parada.nombre }, usuario));
+
+  const { habla } = await decir(peticionLanzamiento(usuario));
+  assert.match(habla, /^Hola, bienvenido a AUVASA\. /);
+  assert.match(habla, new RegExp(`Parada ${parada.codigo} en `));
+});
+
+test('al abrir con parada y línea favoritas usa solo esa línea y avisa de las demás', async () => {
+  const usuario = 'amzn1.ask.account.lanzamientolinea';
+  const parada = catalogo.buscarParadas('Paseo Zorrilla 198 La Rubia', { limite: 1 })[0].parada;
+  const linea = await lineaConServicio(parada);
+  assert.ok(linea, 'debería haber una línea con servicio');
+
+  await decir(peticionIntent('GuardarParadaFavoritaIntent', { parada: parada.nombre }, usuario));
+  await decir(peticionIntent('GuardarLineaFavoritaIntent', { linea: linea.codigo }, usuario));
+
+  const { habla } = await decir(peticionLanzamiento(usuario));
+  const articulo = /^[A-Za-z]/.test(linea.codigo) ? 'La' : 'El';
+  assert.match(habla, new RegExp(`${articulo} ${linea.codigo} hacia`));
+  assert.match(habla, /También hay otras líneas/);
+});
+
+test('“mi parada” consulta las llegadas de la parada favorita', async () => {
+  const usuario = 'amzn1.ask.account.miparada';
+  const parada = catalogo.buscarParadas('Paseo Zorrilla 198 La Rubia', { limite: 1 })[0].parada;
+  await decir(peticionIntent('GuardarParadaFavoritaIntent', { parada: parada.nombre }, usuario));
+
+  const { habla } = await decir(peticionIntent('ConsultarLlegadasIntent', { parada: 'mi parada' }, usuario));
+  assert.match(habla, new RegExp(`^Parada ${parada.codigo} en `));
+});
+
+test('una línea que no pasa por la parada se avisa con claridad', async () => {
+  const parada = catalogo.buscarParadas('Paseo Zorrilla 198 La Rubia', { limite: 1 })[0].parada;
+  const sirven = new Set(catalogo.lineasEnParada(parada.id).map((l) => l.codigo));
+  const otra = catalogo.lineas().find((l) => !sirven.has(l.codigo));
+  assert.ok(otra, 'debería existir alguna línea que no pase por la parada');
+
+  const { habla } = await decir(peticionIntent('ConsultarLlegadasIntent', {
+    parada: parada.nombre,
+    linea: otra.codigo,
+  }));
+  assert.match(habla, /no pasa por la parada/);
+});
+
+test('se guarda y se consulta la línea favorita', async () => {
+  const usuario = 'amzn1.ask.account.lineafavorita';
+  const guardar = await decir(peticionIntent('GuardarLineaFavoritaIntent', { linea: '5' }, usuario));
+  assert.match(guardar.habla, /línea 5 como tu línea favorita/i);
+
+  const consultar = await decir(peticionIntent('ConsultarLineaFavoritaIntent', {}, usuario));
+  assert.match(consultar.habla, /Tu línea favorita es la 5/);
+});
+
+test('se pueden olvidar los favoritos', async () => {
+  const usuario = 'amzn1.ask.account.olvidar';
+  const parada = catalogo.buscarParadas('Paseo Zorrilla 198 La Rubia', { limite: 1 })[0].parada;
+  await decir(peticionIntent('GuardarParadaFavoritaIntent', { parada: parada.nombre }, usuario));
+
+  const borrar = await decir(peticionIntent('OlvidarParadaFavoritaIntent', {}, usuario));
+  assert.match(borrar.habla, /He borrado tu parada favorita/);
+
+  const consultar = await decir(peticionIntent('ConsultarParadaFavoritaIntent', {}, usuario));
+  assert.match(consultar.habla, /Todavía no has guardado/);
+});
+
+test('el recorrido normal se recorta y el completo no', async () => {
+  const normal = await decir(peticionIntent('ConsultarParadasDeLineaIntent', { linea: 'C1' }));
+  assert.match(normal.habla, /y hay más paradas/);
+
+  const completo = await decir(peticionIntent('ConsultarRecorridoCompletoIntent', { linea: 'C1' }));
+  assert.match(completo.habla, /La línea C1/);
+  assert.doesNotMatch(completo.habla, /y hay más paradas/);
 });

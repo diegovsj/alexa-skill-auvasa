@@ -14,11 +14,28 @@ const LanzamientoHandler = {
   canHandle(handlerInput) {
     return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
   },
-  handle(handlerInput) {
-    return handlerInput.responseBuilder
-      .speak(textos.bienvenida)
-      .reprompt(textos.repeticion)
-      .getResponse();
+  async handle(handlerInput) {
+    const favorita = await comun.leerFavorita(handlerInput);
+    if (!favorita) {
+      return handlerInput.responseBuilder
+        .speak(textos.bienvenidaSinFavorita)
+        .reprompt(textos.repeticion)
+        .getResponse();
+    }
+
+    const lineaFavorita = await comun.leerLineaFavorita(handlerInput);
+    const prefijo = textos.bienvenidaConFavorita;
+
+    // Si hay línea favorita y pasa por la parada, damos solo esa línea.
+    if (lineaFavorita && comun.lineaPasaPorParada(favorita, lineaFavorita)) {
+      return comun.responderLlegadas(handlerInput, favorita, {
+        linea: lineaFavorita.codigo,
+        otrasLineas: catalogo.lineasEnParada(favorita.id).length > 1,
+        prefijo,
+      });
+    }
+
+    return comun.responderLlegadas(handlerInput, favorita, { prefijo });
   },
 };
 

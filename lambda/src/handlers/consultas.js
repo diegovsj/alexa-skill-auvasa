@@ -9,6 +9,9 @@ const textos = require('../i18n/es');
 const { enumerarParadas, limpiarNombreLinea } = require('../util/voz');
 const comun = require('./comun');
 
+/** Número de paradas que se enumeran de un recorrido sin pedir el "completo". */
+const PARADAS_RECORRIDO = 8;
+
 /** Pregunta por los próximos autobuses en una parada. */
 const ConsultarLlegadasIntentHandler = {
   canHandle(handlerInput) {
@@ -17,10 +20,10 @@ const ConsultarLlegadasIntentHandler = {
   },
   async handle(handlerInput) {
     const linea = comun.leerSlot(handlerInput, 'linea');
-    const resultado = comun.resolverParada(handlerInput);
+    const valorParada = comun.leerSlot(handlerInput, 'parada');
 
-    if (resultado.estado === 'sinParada') {
-      // Sin parada indicada: usamos la favorita si existe.
+    // Sin parada (o "mi parada"): usamos la favorita si existe.
+    if (!valorParada || comun.esMiParada(valorParada)) {
       const favorita = await comun.leerFavorita(handlerInput);
       if (favorita) return comun.responderLlegadas(handlerInput, favorita, { linea });
 
@@ -29,6 +32,8 @@ const ConsultarLlegadasIntentHandler = {
         .reprompt(textos.sinParada)
         .getResponse();
     }
+
+    const resultado = comun.resolverParada(handlerInput);
 
     if (resultado.estado === 'ambiguo') {
       return comun.pedirConfirmacion(handlerInput, resultado, 'llegadas');
@@ -52,6 +57,15 @@ const ConsultarLineasEnParadaIntentHandler = {
       && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultarLineasEnParadaIntent';
   },
   async handle(handlerInput) {
+    const valorParada = comun.leerSlot(handlerInput, 'parada');
+
+    if (!valorParada || comun.esMiParada(valorParada)) {
+      const favorita = await comun.leerFavorita(handlerInput);
+      if (favorita) return respuestaLineasEnParada(handlerInput, favorita);
+
+      return handlerInput.responseBuilder.speak(textos.sinParada).reprompt(textos.sinParada).getResponse();
+    }
+
     const resultado = comun.resolverParada(handlerInput);
 
     if (resultado.estado === 'ambiguo') {
@@ -73,10 +87,11 @@ const ConsultarLineasEnParadaIntentHandler = {
  * @param {object} parada
  */
 function respuestaLineasEnParada(handlerInput, parada) {
+  const etiqueta = comun.etiquetaParada(parada);
   const lineas = catalogo.lineasEnParada(parada.id);
   if (lineas.length === 0) {
     return handlerInput.responseBuilder
-      .speak(textos.lineasSinServicio(parada.nombre))
+      .speak(textos.lineasSinServicio(etiqueta))
       .reprompt(textos.repeticion)
       .getResponse();
   }
@@ -87,77 +102,103 @@ function respuestaLineasEnParada(handlerInput, parada) {
     : `${codigos.slice(0, -1).join(', ')} y ${codigos[codigos.length - 1]}`;
 
   return handlerInput.responseBuilder
-    .speak(textos.lineasEnParada(parada.nombre, listado))
+    .speak(textos.lineasEnParada(etiqueta, listado))
     .reprompt(textos.repeticion)
     .getResponse();
 }
 
-/** Pregunta por las paradas de una línea. */
+/**
+ * Construye la respuesta con el recorrido de una línea.
+ *
+ * @param {object} handlerInput
+ * @param {string} codigo
+ * @param {boolean} completo si es `true`, no recorta la lista de paradas
+ * @returns {object}
+ */
+function responderRecorrido(handlerInput, codigo, completo) {
+  if (!codigo) {
+    return handlerInput.responseBuilder
+      .speak('Dime de qué línea quieres el recorrido.')
+      .reprompt('Por ejemplo: ¿por qué paradas pasa la línea 3?')
+      .getResponse();
+  }
+
+  const linea = catalogo.lineaPorCodigo(codigo);
+  if (!linea) {
+    return handlerInput.responseBuilder
+      .speak(textos.lineaDesconocida(codigo))
+      .reprompt(textos.repeticion)
+      .getResponse();
+  }
+
+  const recorridos = catalogo.recorridosDeLinea(linea);
+  if (recorridos.length === 0) {
+    return handlerInput.responseBuilder
+      .speak(textos.recorridoNoDisponible(linea.codigo))
+      .reprompt(textos.repeticion)
+      .getResponse();
+  }
+
+  const nombreLargo = limpiarNombreLinea(linea);
+  // Si el nombre largo ya empieza por uno de los destinos, no aporta nada
+  // repetirlo (es el caso de las circulares y de muchas líneas radiales).
+  const mostrarNombre = Boolean(nombreLargo)
+    && !recorridos.some((r) => nombreLargo.toLowerCase().startsWith(r.destino.toLowerCase()));
+
+  const maximo = (paradas) => (completo ? paradas.length : PARADAS_RECORRIDO);
+
+  let respuesta;
+  if (recorridos.length === 1) {
+    respuesta = textos.recorridoLinea(
+      linea.codigo,
+      mostrarNombre ? nombreLargo : '',
+      recorridos[0].destino,
+      enumerarParadas(recorridos[0].paradas, maximo(recorridos[0].paradas), textos),
+    );
+  } else {
+    const prefijo = `La línea ${linea.codigo}. `;
+    const partes = recorridos.map((r) => textos.recorridoLinea(
+      linea.codigo,
+      '',
+      r.destino,
+      enumerarParadas(r.paradas, maximo(r.paradas), textos),
+    ).replace(prefijo, ''));
+    respuesta = textos.recorridoVariosSentidos(linea.codigo) + partes.join(' ');
+  }
+
+  return handlerInput.responseBuilder
+    .speak(respuesta)
+    .reprompt(textos.repeticion)
+    .getResponse();
+}
+
+/** Pregunta por las paradas de una línea (recorrido resumido). */
 const ConsultarParadasDeLineaIntentHandler = {
   canHandle(handlerInput) {
     return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
       && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultarParadasDeLineaIntent';
   },
   handle(handlerInput) {
-    const codigo = comun.leerSlot(handlerInput, 'linea');
-    if (!codigo) {
-      return handlerInput.responseBuilder
-        .speak('Dime de qué línea quieres conocer el recorrido.')
-        .reprompt('Por ejemplo: ¿por qué paradas pasa la línea 3?')
-        .getResponse();
-    }
+    return responderRecorrido(handlerInput, comun.leerSlot(handlerInput, 'linea'), false);
+  },
+};
 
-    const linea = catalogo.lineaPorCodigo(codigo);
-    if (!linea) {
-      return handlerInput.responseBuilder
-        .speak(textos.lineaDesconocida(codigo))
-        .reprompt(textos.repeticion)
-        .getResponse();
-    }
-
-    const recorridos = catalogo.recorridosDeLinea(linea);
-    if (recorridos.length === 0) {
-      return handlerInput.responseBuilder
-        .speak(textos.sinLlegadasLinea(linea.codigo, ''))
-        .reprompt(textos.repeticion)
-        .getResponse();
-    }
-
-    const nombreLargo = limpiarNombreLinea(linea);
-    // Si el nombre largo ya empieza por uno de los destinos, no aporta nada
-    // repetirlo (es el caso de las circulares y de muchas líneas radiales).
-    const mostrarNombre = Boolean(nombreLargo)
-      && !recorridos.some((r) => nombreLargo.toLowerCase().startsWith(r.destino.toLowerCase()));
-
-    let respuesta;
-    if (recorridos.length === 1) {
-      respuesta = textos.recorridoLinea(
-        linea.codigo,
-        mostrarNombre ? nombreLargo : '',
-        recorridos[0].destino,
-        enumerarParadas(recorridos[0].paradas, 12, textos),
-      );
-    } else {
-      const prefijo = `La línea ${linea.codigo}. `;
-      const partes = recorridos.map((r) => textos.recorridoLinea(
-        linea.codigo,
-        '',
-        r.destino,
-        enumerarParadas(r.paradas, 12, textos),
-      ).replace(prefijo, ''));
-      respuesta = textos.recorridoVariosSentidos(linea.codigo) + partes.join(' ');
-    }
-
-    return handlerInput.responseBuilder
-      .speak(respuesta)
-      .reprompt(textos.repeticion)
-      .getResponse();
+/** Pregunta por el recorrido completo de una línea (sin recortar). */
+const ConsultarRecorridoCompletoIntentHandler = {
+  canHandle(handlerInput) {
+    return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+      && Alexa.getIntentName(handlerInput.requestEnvelope) === 'ConsultarRecorridoCompletoIntent';
+  },
+  handle(handlerInput) {
+    return responderRecorrido(handlerInput, comun.leerSlot(handlerInput, 'linea'), true);
   },
 };
 
 module.exports = {
   ConsultarLlegadasIntentHandler,
   ConsultarLineasEnParadaIntentHandler,
-  ConsultarParadasDeLineaIntentHandler,
   respuestaLineasEnParada,
+  ConsultarParadasDeLineaIntentHandler,
+  ConsultarRecorridoCompletoIntentHandler,
+  responderRecorrido,
 };

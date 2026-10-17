@@ -23,13 +23,19 @@ tener en cuenta los retrasos.
 
 | Pregunta de ejemplo | Qué responde |
 | --- | --- |
-| «Alexa, abre bus valladolid» | Bienvenida y ayuda inicial |
-| «¿Cuándo pasa el próximo autobús en la parada Paseo Zorrilla 198?» | Próximos autobuses con línea, destino y minutos |
-| «¿Cuánto le queda a la línea 8 para llegar a la parada 550?» | Llegadas de esa línea (parada por **número**) |
-| «¿Qué líneas pasan por Plaza Mayor?» | Líneas que paran en la parada |
-| «¿Por qué paradas pasa la línea C1?» | Recorrido de la línea |
-| «Guarda Paseo Zorrilla 198 como mi parada favorita» | Guarda la parada para el usuario |
-| «¿Cuándo pasa el próximo autobús en mi parada?» | Llegadas a la parada favorita |
+| «Alexa, abre bus valladolid» | Si tienes parada favorita, va directo a sus llegadas; si no, da la bienvenida |
+| «¿Cuándo pasa el próximo autobús en la parada 198?» | Próximos autobuses con línea, destino y minutos |
+| «¿Cuánto le queda a la línea 8 para llegar a la parada 550?» | Solo las llegadas de esa línea (parada por nombre o número) |
+| «¿Cuándo pasa el 8 en mi parada?» | Esa línea en tu parada favorita |
+| «¿Qué líneas pasan por mi parada?» | Líneas que paran en esa parada |
+| «¿Por qué paradas pasa la línea C1?» | Recorrido resumido (8 paradas); con «recorrido completo», todas |
+| «Guarda Paseo Zorrilla 198 como mi parada favorita» | Guarda la parada favorita |
+| «Guarda la línea 8 como mi línea favorita» | Guarda también una línea favorita (opcional) |
+| «Olvida mi parada favorita» / «olvida mi línea favorita» | Borra los favoritos |
+
+> **Favoritos y apertura:** al abrir la skill, si tienes parada favorita te da
+> las próximas llegadas (solo de tu línea favorita si la tienes y pasa por ahí;
+> si no, de todas las líneas). La línea favorita **solo** se usa al abrir.
 
 La información en tiempo real se aplica automáticamente cuando está disponible.
 Si el feed falla, la skill responde igualmente con el horario teórico.
@@ -39,7 +45,7 @@ Si el feed falla, la skill responde igualmente con el horario teórico.
 ## Estado
 
 - **Versión:** `0.1.0`.
-- **Pruebas:** `npm test` ejecuta **37 pruebas** (datos, GTFS‑Realtime, horarios
+- **Pruebas:** `npm test` ejecuta **44 pruebas** (datos, GTFS‑Realtime, horarios
   y simulación completa de la skill) y todas pasan.
 - **Desplegada** en la etapa de desarrollo de una skill *Alexa‑hosted*.
 - **Publicación en la tienda:** pendiente de certificación.
@@ -214,7 +220,7 @@ no una obligación de la licencia.
 
 Las *pull requests* y los *issues* son bienvenidos. Antes de enviar cambios:
 
-1. Pasa las pruebas: `npm test` (37/37).
+1. Pasa las pruebas: `npm test` (44/44).
 2. Regenera los ficheros derivados si tocas los datos:
    `npm run datos:offline && npm run modelo` (los iconos no dependen de los
    datos, así que no hace falta regenerarlos).

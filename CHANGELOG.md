@@ -36,6 +36,18 @@ El proyecto usa [Versionado Semántico](https://semver.org/lang/es/).
 - Compatibilidad con el runtime **Node.js 16** de Alexa‑hosted: `gtfsRealtime`
   usa `fetch` si el runtime lo trae y, si no, un respaldo con `http`/`https`;
   `lambda/package.json` pasa a `"engines": {"node": ">=16"}`.
+- **Conversación más breve y natural**: al abrir la skill con parada favorita se
+  dan directamente las llegadas (con un «Hola, bienvenido a AUVASA»); la
+  cabecera dice el número y el nombre de la parada; el aviso de tiempo real solo
+  aparece cuando el feed **no** está disponible; las llegadas se agrupan por
+  línea y destino; y los mensajes de error son más cortos.
+- El **recorrido de una línea** se recorta a 8 paradas por sentido y termina con
+  «y hay más paradas»; con «recorrido completo de la línea X» se enumeran todas.
+- Consulta de una **línea concreta en la parada favorita** («¿cuándo pasa el 8 en
+  mi parada?») y aviso claro cuando la línea no pasa por esa parada.
+- **Línea favorita** (opcional), además de la parada favorita: se guarda,
+  consulta y olvida, y al abrir la skill se usa si pasa por la parada favorita.
+- Al añadir la línea favorita se avisa si no pasa por la parada favorita.
 - El handler de salida cierra la sesión explícitamente.
 - El simulador y las pruebas desenvuelven el texto SSML del SDK.
 

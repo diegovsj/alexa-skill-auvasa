@@ -12,59 +12,85 @@ module.exports = {
 
   nombre: 'AUVASA',
 
-  bienvenida: `Te doy la bienvenida a ${'AUVASA'}, la información de los autobuses urbanos de Valladolid. `
-    + 'Puedes preguntarme cuándo pasa el próximo autobús por una parada, qué líneas paran en ella '
-    + 'o guardar tu parada favorita.',
+  bienvenidaConFavorita: 'Hola, bienvenido a AUVASA.',
 
-  ayuda: 'Puedes decir, por ejemplo: ¿cuándo pasa el próximo autobús en la parada Paseo Zorrilla 198? '
-    + 'También puedes nombrar la parada por su número, como ¿cuánto le queda a la línea 8 para llegar a la parada 400? '
-    + 'Y puedes preguntar qué líneas pasan por una parada o pedir el recorrido de una línea. '
-    + '¿Qué quieres saber?',
+  bienvenidaSinFavorita: 'Hola, bienvenido a AUVASA. Dime una parada, por su nombre o por su número, '
+    + 'y te digo cuándo llega el próximo autobús. También puedes guardar tu parada favorita.',
+
+  ayuda: 'Puedes decir la parada por su nombre o por su número: por ejemplo, ¿cuándo pasa el próximo '
+    + 'autobús en la parada 545? También puedes preguntar qué líneas pasan por una parada o pedir '
+    + 'el recorrido de una línea. ¿Qué quieres saber?',
 
   repeticion: '¿Qué más quieres consultar?',
 
   despedida: 'Hasta luego.',
 
-  noEntendido: 'No te he entendido. Puedes decir: ¿cuándo pasa el próximo autobús en Paseo Zorrilla 198 La Rubia?',
+  noEntendido: 'No te he entendido. Prueba con: ¿cuándo pasa el próximo autobús en la parada 545?',
 
-  sinParada: 'Dime el nombre o el número de la parada. Por ejemplo: Paseo Zorrilla 198 La Rubia, o la parada 400.',
+  sinParada: 'Dime el nombre o el número de la parada.',
 
-  paradaNoEncontrada: (valor) => `No he encontrado ninguna parada que se parezca a ${escaparSsml(valor)}. `
-    + 'Intenta decirlo de otra forma, por ejemplo, el nombre de la calle y el número.',
+  paradaNoEncontrada: (valor) => `No he encontrado ninguna parada parecida a ${escaparSsml(valor)}. `
+    + 'Intenta decirlo de otra forma.',
 
-  paradaAmbigua: (opciones) => `He encontrado varias paradas parecidas: ${opciones}. ¿Cuál de ellas quieres consultar?`,
+  paradaAmbigua: (opciones) => `He encontrado varias: ${opciones}. ¿Cuál quieres consultar?`,
 
-  confirmarParada: (nombre) => `¿Te refieres a la parada ${nombre}?`,
+  confirmarParada: (nombre) => `¿Te refieres a la parada ${escaparSsml(nombre)}?`,
 
   descartarParada: 'De acuerdo, dime otra parada.',
 
+  // --- Líneas -----------------------------------------------------------------
   lineaDesconocida: (linea) => `No conozco ninguna línea ${escaparSsml(linea)} en la red de AUVASA.`,
+  lineaNoPasa: (linea, etiqueta) => `La línea ${escaparSsml(linea)} no pasa por la parada ${escaparSsml(etiqueta)}.`,
 
-  sinLlegadas: (nombre) => `Ahora mismo no hay autobuses previstos en la parada ${nombre} en las próximas horas.`,
-  sinLlegadasLinea: (linea, nombre) => `Ahora mismo no hay ningún autobús de la línea ${linea} previsto en la parada ${nombre}.`,
+  // --- Llegadas ---------------------------------------------------------------
+  tituloLlegadas: (etiqueta) => `Parada ${escaparSsml(etiqueta)}.`,
+  otrasLineasEnParada: ' También hay otras líneas en esta parada.',
+  sinLlegadas: (etiqueta) => `Ahora mismo no hay autobuses previstos en la parada ${escaparSsml(etiqueta)}.`,
+  sinLlegadasLinea: (linea, etiqueta) => `Ahora mismo no hay autobuses de la línea ${escaparSsml(linea)} `
+    + `en la parada ${escaparSsml(etiqueta)}.`,
+  avisoSinTiempoReal: ' Estos son horarios previstos, pueden variar.',
 
-  tituloLlegadas: (nombre, codigo) => `Parada ${nombre}, número ${codigo}.`,
+  llegadaAhora: (etiqueta, destino) => `${etiqueta} hacia ${destino} está llegando`,
+  llegadaConTiempos: (etiqueta, destino, tiempos) => `${etiqueta} hacia ${destino}, ${tiempos}`,
 
-  llegadaAhora: (codigo, destino) => `El ${codigo} hacia ${destino} está llegando.`,
-  llegadaMinutos: (codigo, destino, minutos) => minutos === 1
-    ? `El ${codigo} hacia ${destino}, en un minuto.`
-    : `El ${codigo} hacia ${destino}, en ${minutos} minutos.`,
-  llegadaHora: (hora) => `, a las ${hora}`,
-  llegadaTiempoReal: ' Los datos están actualizados en tiempo real.',
+  /**
+   * Convierte una lista de minutos en texto: [3] -> "3 minutos",
+   * [3, 10] -> "3 y 10 minutos", [1] -> "un minuto".
+   *
+   * @param {number[]} minutos
+   * @returns {string}
+   */
+  listaMinutos: (minutos) => {
+    if (minutos.length === 1) return minutos[0] === 1 ? 'un minuto' : `${minutos[0]} minutos`;
+    const unidad = minutos.every((m) => m === 1) ? 'minuto' : 'minutos';
+    return `${minutos.slice(0, -1).join(', ')} y ${minutos[minutos.length - 1]} ${unidad}`;
+  },
 
-  lineasEnParada: (nombre, listado) => `En la parada ${nombre} paran las líneas ${listado}.`,
-  lineasSinServicio: (nombre) => `La parada ${nombre} no tiene líneas asignadas.`,
-  lineaEnParada: (nombre, codigo) => `En la parada ${nombre} para la línea ${codigo}.`,
+  // --- Líneas que pasan por una parada ---------------------------------------
+  lineasEnParada: (etiqueta, listado) => `En la parada ${escaparSsml(etiqueta)} paran las líneas ${listado}.`,
+  lineasSinServicio: (etiqueta) => `La parada ${escaparSsml(etiqueta)} no tiene líneas asignadas.`,
 
-  recorridoLinea: (codigo, nombre, destino, listado) => `La línea ${codigo}${nombre ? `, ${nombre}` : ''}. Hacia ${destino}, pasa por ${listado}.`,
+  // --- Recorrido --------------------------------------------------------------
+  recorridoLinea: (codigo, nombre, destino, listado) => `La línea ${codigo}${nombre ? `, ${nombre}` : ''}. `
+    + `Hacia ${destino}, pasa por ${listado}.`,
   recorridoVariosSentidos: (codigo) => `La línea ${codigo} tiene dos sentidos. `,
-  recorridoDemasiadoLargo: 'y algunas paradas más',
+  recorridoDemasiadoLargo: 'y hay más paradas',
+  recorridoNoDisponible: (codigo) => `No tengo el recorrido de la línea ${escaparSsml(codigo)}.`,
 
-  favoritaGuardada: (nombre) => `He guardado ${nombre} como tu parada favorita. `
-    + 'Ahora puedes preguntarme cuándo pasa el próximo autobús en mi parada.',
-  favoritaSinGuardar: 'Todavía no has guardado ninguna parada favorita. '
-    + 'Puedes decir: guarda Paseo Zorrilla 198 La Rubia como mi parada favorita.',
-  favoritaActual: (nombre) => `Tu parada favorita es ${nombre}.`,
+  // --- Favoritos --------------------------------------------------------------
+  favoritaGuardada: (etiqueta) => `He guardado la parada ${escaparSsml(etiqueta)} como tu parada favorita.`,
+  favoritaGuardadaConAviso: (etiqueta, codigoLinea) => `He guardado la parada ${escaparSsml(etiqueta)} como tu `
+    + `parada favorita. Ojo: tu línea favorita ${escaparSsml(codigoLinea)} no pasa por aquí; `
+    + 'te mostraré todas las líneas.',
+  favoritaSinGuardar: 'Todavía no has guardado ninguna parada favorita.',
+  favoritaActual: (etiqueta) => `Tu parada favorita es la parada ${escaparSsml(etiqueta)}.`,
+  favoritaOlvidada: 'He borrado tu parada favorita.',
 
-  avisoHorario: ' Los horarios pueden variar; consulta siempre la información de la marquesina.',
+  lineaFavoritaGuardada: (codigo) => `He guardado la línea ${escaparSsml(codigo)} como tu línea favorita.`,
+  lineaFavoritaGuardadaConAviso: (codigo, etiqueta) => `He guardado la línea ${escaparSsml(codigo)} como tu `
+    + `línea favorita, pero no pasa por la parada ${escaparSsml(etiqueta)}; en tu parada te mostraré `
+    + 'todas las líneas.',
+  lineaFavoritaSinGuardar: 'Todavía no has guardado ninguna línea favorita.',
+  lineaFavoritaActual: (codigo) => `Tu línea favorita es la ${escaparSsml(codigo)}.`,
+  lineaFavoritaOlvidada: 'He borrado tu línea favorita.',
 };

@@ -19,36 +19,63 @@ function nombrarLinea(codigo) {
 }
 
 /**
- * Describe una llegada en lenguaje natural.
+ * Pone en mayúscula la primera letra.
  *
- * @param {object} llegada
- * @param {object} textos
+ * @param {string} texto
  * @returns {string}
  */
-function describirLlegada(llegada, textos) {
-  const { codigo } = llegada.linea;
-  if (llegada.pasaYa) {
-    return textos.llegadaAhora(codigo, llegada.destino);
-  }
-  const base = textos.llegadaMinutos(codigo, llegada.destino, llegada.minutos);
-  return base;
+function capitalizar(texto) {
+  return texto ? texto[0].toUpperCase() + texto.slice(1) : texto;
 }
 
 /**
- * Une las descripciones de varias llegadas.
+ * Describe una llegada (o varias de la misma línea y destino) en lenguaje
+ * natural. Agrupa los minutos: "el 5 hacia Centro, en 3 y 10 minutos".
+ *
+ * @param {object[]} lista llegadas de la misma línea y destino
+ * @param {object} textos
+ * @returns {string}
+ */
+function describirGrupo(lista, textos) {
+  const etiqueta = nombrarLinea(lista[0].linea.codigo);
+  const destino = lista[0].destino;
+
+  const hayAhora = lista.some((l) => l.pasaYa);
+  const minutos = lista.filter((l) => !l.pasaYa).map((l) => l.minutos);
+
+  if (hayAhora && minutos.length === 0) {
+    return textos.llegadaAhora(etiqueta, destino);
+  }
+
+  const tiempos = hayAhora
+    ? `ahora y en ${textos.listaMinutos(minutos)}`
+    : `en ${textos.listaMinutos(minutos)}`;
+  return textos.llegadaConTiempos(etiqueta, destino, tiempos);
+}
+
+/**
+ * Une las descripciones de varias llegadas, agrupándolas por línea y destino.
  *
  * @param {object[]} llegadas
  * @param {object} textos
  * @returns {string}
  */
 function describirLlegadas(llegadas, textos) {
-  const partes = llegadas.map((l) => describirLlegada(l, textos).replace(/\.$/, ''));
-  if (partes.length === 1) return `${partes[0]}.`;
+  const grupos = new Map();
+  for (const llegada of llegadas) {
+    const clave = `${llegada.linea.codigo}|${llegada.destino}`;
+    if (!grupos.has(clave)) grupos.set(clave, []);
+    grupos.get(clave).push(llegada);
+  }
 
-  const ultima = partes[partes.length - 1]
-    .replace(/^El /, 'el ')
-    .replace(/^La /, 'la ');
-  return `${partes.slice(0, -1).join('. ')}. Y ${ultima}.`;
+  const partes = [...grupos.values()].map((lista) => describirGrupo(lista, textos));
+  if (partes.length === 1) return `${capitalizar(partes[0])}.`;
+
+  const primera = capitalizar(partes[0]);
+  const ultima = partes[partes.length - 1];
+  const intermedias = partes.slice(1, -1);
+  const resto = intermedias.length ? ` ${intermedias.map((p) => `${p}.`).join(' ')}` : '';
+  return `${primera}.${resto} Y ${ultima}.`;
 }
 
 /**
@@ -74,7 +101,7 @@ function enumerarParadas(paradas, maximo, textos) {
   const listado = nombres.length <= 1
     ? nombres.join('')
     : `${nombres.slice(0, -1).join(', ')} y ${nombres[nombres.length - 1]}`;
-  return paradas.length > maximo ? `${listado}, ${textos.recorridoDemasiadoLargo.toLowerCase()}` : listado;
+  return paradas.length > maximo ? `${listado}, ${textos.recorridoDemasiadoLargo}` : listado;
 }
 
 /**
@@ -87,4 +114,4 @@ function hora(segundos) {
   return formatearHora(segundos);
 }
 
-module.exports = { nombrarLinea, describirLlegada, describirLlegadas, enumerarParadas, limpiarNombreLinea, hora };
+module.exports = { nombrarLinea, describirLlegadas, enumerarParadas, limpiarNombreLinea, hora };
