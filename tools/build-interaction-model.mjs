@@ -25,7 +25,7 @@ const RAIZ = path.resolve(AQUI, '..');
 const DIR_DATOS = path.join(RAIZ, 'lambda', 'data');
 const DIR_SALIDA = path.join(RAIZ, 'skill-package', 'interactionModels', 'custom');
 
-const INVOCATION_NAME = process.env.AUVASA_INVOCATION_NAME || 'auvasa';
+const INVOCATION_NAME = process.env.AUVASA_INVOCATION_NAME || 'valla bus';
 
 const locales = process.argv.slice(2).filter((a) => /^[a-z]{2}-[A-Z]{2}$/.test(a));
 if (locales.length === 0) locales.push('es-ES');
