@@ -1,3 +1,5 @@
+<img src="images/logo-512.png" alt="AUVASA" width="160">
+
 # Política de privacidad de AUVASA
 
 **Última actualización:** 17 de octubre de 2026

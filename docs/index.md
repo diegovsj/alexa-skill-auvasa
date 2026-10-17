@@ -1,3 +1,5 @@
+<img src="images/logo-512.png" alt="AUVASA" width="180">
+
 # AUVASA — información legal
 
 Documentos legales de la skill de Alexa **AUVASA** (autobuses urbanos de

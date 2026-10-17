@@ -1,5 +1,9 @@
 # AUVASA — Skill de Alexa para los autobuses urbanos de Valladolid
 
+<p align="center">
+  <img src="docs/images/logo-512.png" alt="AUVASA" width="200">
+</p>
+
 Skill de voz que consulta **cuándo pasa el próximo autobús de AUVASA** por una
 parada, qué líneas paran en ella, el recorrido de una línea o la parada favorita
 del usuario. Combina el **GTFS estático** oficial con el **GTFS‑Realtime** para
