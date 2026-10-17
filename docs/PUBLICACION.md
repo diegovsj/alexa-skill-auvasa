@@ -222,5 +222,5 @@ git push origin master
 | `hostedSkillDeployment: FAILED` | Revisa `engines: >=16` y que el manifiesto conserve el endpoint. |
 | El tiempo real no funciona | El runtime es Node 16 (sin `fetch` global); el código ya incluye un respaldo `http`/`https`. |
 | Las llegadas son de otro día | El calendario ha caducado: `npm run datos`. |
-| La ficha dice *«An Example Phrase is missing for the es‑ES locale»* | El manifiesto ya incluye frases de ejemplo para `es-ES`. Refresca la consola (Ctrl+F5), comprueba que el selector de idioma es `es-ES`, revisa el campo **Example Phrases** y vuelve a guardar. |
+| La ficha dice *«An Example Phrase is missing for the es‑ES locale»* | El mensaje también aparece si hay **más de 3** frases de ejemplo (el máximo son **3**) o si alguna no cumple los requisitos. Deja exactamente 3 que empiecen por «Alexa,», contengan el nombre de invocación (`AUVASA`) y no pasen de 200 caracteres. |
 | La ficha pide algo y no se ve qué falta | Abre las herramientas del navegador (F12) → **Network** → pulsa **Save** → mira la respuesta de la petición en rojo: indica el campo exacto. |
