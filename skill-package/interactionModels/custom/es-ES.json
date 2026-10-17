@@ -1,7 +1,7 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "valla bus",
+      "invocationName": "bus valladolid",
       "intents": [
         {
           "name": "ConsultarLlegadasIntent",

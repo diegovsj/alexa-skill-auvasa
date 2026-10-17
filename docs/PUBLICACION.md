@@ -149,7 +149,7 @@ Repasa la lista de certificación:
 - [ ] Cancel, Stop y Help implementados.
 - [ ] Funciona en dispositivos sin pantalla.
 - [ ] Sin contenido ofensivo, publicidad ni compras.
-- [ ] El nombre de invocación funciona (`valla bus`).
+- [ ] El nombre de invocación funciona (`bus valladolid`).
 - [ ] La respuesta llega en menos de ~8 s.
 - [ ] Instrucciones de prueba claras.
 - [ ] Atribución de datos correcta (AUVASA, CC BY 3.0 ES).
@@ -222,5 +222,5 @@ git push origin master
 | `hostedSkillDeployment: FAILED` | Revisa `engines: >=16` y que el manifiesto conserve el endpoint. |
 | El tiempo real no funciona | El runtime es Node 16 (sin `fetch` global); el código ya incluye un respaldo `http`/`https`. |
 | Las llegadas son de otro día | El calendario ha caducado: `npm run datos`. |
-| La ficha dice *«An Example Phrase is missing for the es‑ES locale»* | El mensaje también aparece si hay **más de 3** frases de ejemplo (el máximo son **3**) o si alguna no cumple los requisitos. Deja exactamente 3 que empiecen por «Alexa,», contengan el nombre de invocación (`valla bus`) y no pasen de 200 caracteres. |
+| La ficha dice *«An Example Phrase is missing for the es‑ES locale»* | El mensaje también aparece si hay **más de 3** frases de ejemplo (el máximo son **3**) o si alguna no cumple los requisitos. Deja exactamente 3 que empiecen por «Alexa,», contengan el nombre de invocación (`bus valladolid`) y no pasen de 200 caracteres. |
 | La ficha pide algo y no se ve qué falta | Abre las herramientas del navegador (F12) → **Network** → pulsa **Save** → mira la respuesta de la petición en rojo: indica el campo exacto. |

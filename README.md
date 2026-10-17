@@ -18,12 +18,12 @@ tener en cuenta los retrasos.
 
 ## ¿Qué puede hacer?
 
-> **Nombre de invocación:** «**valla bus**». El nombre de la skill es *AUVASA*,
-> pero se abre diciendo «Alexa, abre valla bus».
+> **Nombre de invocación:** «**bus valladolid**». El nombre de la skill es *AUVASA*,
+> pero se abre diciendo «Alexa, abre bus valladolid».
 
 | Pregunta de ejemplo | Qué responde |
 | --- | --- |
-| «Alexa, abre valla bus» | Bienvenida y ayuda inicial |
+| «Alexa, abre bus valladolid» | Bienvenida y ayuda inicial |
 | «¿Cuándo pasa el próximo autobús en la parada Paseo Zorrilla 198?» | Próximos autobuses con línea, destino y minutos |
 | «¿Cuánto le queda a la línea 8 para llegar a la parada 550?» | Llegadas de esa línea (parada por **número**) |
 | «¿Qué líneas pasan por Plaza Mayor?» | Líneas que paran en la parada |
