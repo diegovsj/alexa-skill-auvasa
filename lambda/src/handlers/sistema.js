@@ -93,6 +93,15 @@ const SiIntentHandler = {
     const pendiente = comun.leerPendiente(handlerInput);
     if (pendiente) return ejecutarPendiente(handlerInput, pendiente);
 
+    // El usuario acepta guardar la parada que acabamos de consultar.
+    const atributos = handlerInput.attributesManager.getSessionAttributes();
+    if (atributos.favoritaSugerida) {
+      const parada = catalogo.paradaPorId(atributos.favoritaSugerida.id);
+      delete atributos.favoritaSugerida;
+      handlerInput.attributesManager.setSessionAttributes(atributos);
+      if (parada) return guardarFavorita(handlerInput, parada);
+    }
+
     return handlerInput.responseBuilder
       .speak(textos.ayuda)
       .reprompt(textos.repeticion)
@@ -114,6 +123,25 @@ const NoIntentHandler = {
       const siguiente = pendiente.candidatos[pendiente.indice];
       return handlerInput.responseBuilder
         .speak(textos.confirmarParada(siguiente.nombre))
+        .reprompt(textos.repeticion)
+        .getResponse();
+    }
+
+    if (pendiente) {
+      comun.limpiarPendiente(handlerInput);
+      return handlerInput.responseBuilder
+        .speak(textos.descartarParada)
+        .reprompt(textos.sinParada)
+        .getResponse();
+    }
+
+    // El usuario rechaza guardar la parada que acababa de consultar.
+    const atributos = handlerInput.attributesManager.getSessionAttributes();
+    if (atributos.favoritaSugerida) {
+      delete atributos.favoritaSugerida;
+      handlerInput.attributesManager.setSessionAttributes(atributos);
+      return handlerInput.responseBuilder
+        .speak(textos.sugerirFavoritaNo)
         .reprompt(textos.repeticion)
         .getResponse();
     }

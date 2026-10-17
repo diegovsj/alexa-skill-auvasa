@@ -23,7 +23,7 @@ npm run simular -- --intent ConsultarLlegadasIntent --texto "zorrilla 198"
 
 ## Antes de enviar cambios
 
-1. **Pasa las pruebas:** `npm test` (deben pasar las 44).
+1. **Pasa las pruebas:** `npm test` (deben pasar las 45).
 2. **Regenera los ficheros derivados** si has tocado los datos o su
    generación:
    ```bash

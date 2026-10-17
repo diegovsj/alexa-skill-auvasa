@@ -18,8 +18,9 @@ tener en cuenta los retrasos.
 
 ## ¿Qué puede hacer?
 
-> **Nombre de invocación:** «**bus valladolid**». El nombre de la skill es *AUVASA*,
-> pero se abre diciendo «Alexa, abre bus valladolid».
+> **Nombre en la tienda:** «**AUVASA (Bus Valladolid)**». **Nombre de
+> invocación:** «**bus valladolid**», así que se abre diciendo «Alexa, abre bus
+> valladolid».
 
 | Pregunta de ejemplo | Qué responde |
 | --- | --- |
@@ -45,7 +46,7 @@ Si el feed falla, la skill responde igualmente con el horario teórico.
 ## Estado
 
 - **Versión:** `0.1.0`.
-- **Pruebas:** `npm test` ejecuta **44 pruebas** (datos, GTFS‑Realtime, horarios
+- **Pruebas:** `npm test` ejecuta **45 pruebas** (datos, GTFS‑Realtime, horarios
   y simulación completa de la skill) y todas pasan.
 - **Desplegada** en la etapa de desarrollo de una skill *Alexa‑hosted*.
 - **Publicación en la tienda:** pendiente de certificación.
@@ -220,7 +221,7 @@ no una obligación de la licencia.
 
 Las *pull requests* y los *issues* son bienvenidos. Antes de enviar cambios:
 
-1. Pasa las pruebas: `npm test` (44/44).
+1. Pasa las pruebas: `npm test` (45/45).
 2. Regenera los ficheros derivados si tocas los datos:
    `npm run datos:offline && npm run modelo` (los iconos no dependen de los
    datos, así que no hace falta regenerarlos).

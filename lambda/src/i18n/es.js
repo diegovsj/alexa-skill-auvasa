@@ -14,12 +14,13 @@ module.exports = {
 
   bienvenidaConFavorita: 'Hola, bienvenido a AUVASA.',
 
-  bienvenidaSinFavorita: 'Hola, bienvenido a AUVASA. Dime una parada, por su nombre o por su número, '
-    + 'y te digo cuándo llega el próximo autobús. También puedes guardar tu parada favorita.',
+  bienvenidaSinFavorita: 'Hola, bienvenido a AUVASA, el bus de Valladolid. Dime una parada, por su nombre '
+    + 'o por su número, y te digo cuándo llega el próximo autobús. También puedes guardar tu parada y '
+    + 'tu línea favoritas.',
 
   ayuda: 'Puedes decir la parada por su nombre o por su número: por ejemplo, ¿cuándo pasa el próximo '
-    + 'autobús en la parada 545? También puedes preguntar qué líneas pasan por una parada o pedir '
-    + 'el recorrido de una línea. ¿Qué quieres saber?',
+    + 'autobús en la parada 545? También puedes preguntar qué líneas pasan por una parada, pedir el '
+    + 'recorrido de una línea o guardar tu parada y tu línea favoritas. ¿Qué quieres saber?',
 
   repeticion: '¿Qué más quieres consultar?',
 
@@ -82,9 +83,12 @@ module.exports = {
   favoritaGuardadaConAviso: (etiqueta, codigoLinea) => `He guardado la parada ${escaparSsml(etiqueta)} como tu `
     + `parada favorita. Ojo: tu línea favorita ${escaparSsml(codigoLinea)} no pasa por aquí; `
     + 'te mostraré todas las líneas.',
-  favoritaSinGuardar: 'Todavía no has guardado ninguna parada favorita.',
+  favoritaSinGuardar: 'Todavía no has guardado ninguna parada favorita. Puedes decir: guarda Paseo '
+    + 'Zorrilla 198 como mi parada favorita.',
   favoritaActual: (etiqueta) => `Tu parada favorita es la parada ${escaparSsml(etiqueta)}.`,
   favoritaOlvidada: 'He borrado tu parada favorita.',
+  sugerirFavorita: '¿Quieres guardarla como tu parada favorita?',
+  sugerirFavoritaNo: 'De acuerdo.',
 
   lineaFavoritaGuardada: (codigo) => `He guardado la línea ${escaparSsml(codigo)} como tu línea favorita.`,
   lineaFavoritaGuardadaConAviso: (codigo, etiqueta) => `He guardado la línea ${escaparSsml(codigo)} como tu `

@@ -35,7 +35,7 @@ const APLICACION = 'amzn1.ask.skill.test';
  * @param {Record<string, string>} [slots]
  * @returns {object}
  */
-function peticionIntent(intent, slots = {}, usuario = USUARIO) {
+function peticionIntent(intent, slots = {}, usuario = USUARIO, atributosSesion = {}) {
   const slotsAlexa = {};
   for (const [nombre, valor] of Object.entries(slots)) {
     slotsAlexa[nombre] = { name: nombre, value: valor, confirmationStatus: 'NONE' };
@@ -46,7 +46,7 @@ function peticionIntent(intent, slots = {}, usuario = USUARIO) {
     timestamp: REFERENCIA.toISOString(),
     locale: 'es-ES',
     intent: { name: intent, confirmationStatus: 'NONE', slots: slotsAlexa },
-  }, usuario);
+  }, usuario, atributosSesion);
 }
 
 /**
@@ -67,14 +67,14 @@ function peticionLanzamiento(usuario = USUARIO) {
  * @param {string} [usuario]
  * @returns {object}
  */
-function envolver(request, usuario = USUARIO) {
+function envolver(request, usuario = USUARIO, atributosSesion = {}) {
   return {
     version: '1.0',
     session: {
       new: true,
       sessionId: 'amzn1.echo-api.session.test',
       application: { applicationId: APLICACION },
-      attributes: {},
+      attributes: atributosSesion,
       user: { userId: usuario },
     },
     context: {
@@ -350,4 +350,23 @@ test('el recorrido normal se recorta y el completo no', async () => {
   const completo = await decir(peticionIntent('ConsultarRecorridoCompletoIntent', { linea: 'C1' }));
   assert.match(completo.habla, /La línea C1/);
   assert.doesNotMatch(completo.habla, /y hay más paradas/);
+});
+
+test('si no hay favorita, ofrece guardar la parada y acepta el sí', async () => {
+  const usuario = 'amzn1.ask.account.sugerencia';
+  const parada = catalogo.buscarParadas('Paseo Zorrilla 198 La Rubia', { limite: 1 })[0].parada;
+
+  const consulta = await decir(peticionIntent(
+    'ConsultarLlegadasIntent',
+    { parada: parada.nombre },
+    usuario,
+  ));
+  assert.match(consulta.habla, /¿Quieres guardarla como tu parada favorita\?/);
+
+  // El servicio de Alexa conserva los atributos de sesión entre turnos; aquí
+  // los simulamos para probar el "sí".
+  const si = await decir(peticionIntent('AMAZON.YesIntent', {}, usuario, {
+    favoritaSugerida: { id: parada.id },
+  }));
+  assert.match(si.habla, /He guardado la parada 1000 en Paseo Zorrilla 198 La Rubia como tu parada favorita/);
 });

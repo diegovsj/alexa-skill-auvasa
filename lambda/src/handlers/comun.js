@@ -65,7 +65,20 @@ function esMiParada(valor) {
  */
 function resolverParada(handlerInput, nombreSlot = 'parada') {
   const valor = leerSlot(handlerInput, nombreSlot);
-  if (!valor) return { estado: 'sinParada' };
+  const reconocidas = paradasReconocidas(handlerInput, nombreSlot);
+
+  if (!valor && reconocidas.length === 0) return { estado: 'sinParada' };
+
+  // Si Alexa ha reconocido la parada, nos fiamos de su resolución; si hay
+  // varias, preguntamos cuál.
+  if (reconocidas.length === 1) return { estado: 'ok', parada: reconocidas[0] };
+  if (reconocidas.length > 1) {
+    return {
+      estado: 'ambiguo',
+      valor: valor || reconocidas[0].nombre,
+      candidatos: reconocidas.slice(0, 3).map((parada) => ({ parada })),
+    };
+  }
 
   const candidatos = catalogo.buscarParadas(valor, { limite: 5 });
   if (candidatos.length === 0) return { estado: 'sinResultados', valor };
@@ -75,6 +88,25 @@ function resolverParada(handlerInput, nombreSlot = 'parada') {
     return { estado: 'ok', parada: mejor.parada };
   }
   return { estado: 'ambiguo', valor, candidatos: candidatos.slice(0, 3) };
+}
+
+/**
+ * Paradas que Alexa ha reconocido para un slot (entity resolution). Es más
+ * fiable que la búsqueda difusa porque usa el propio vocabulario del modelo.
+ *
+ * @param {object} handlerInput
+ * @param {string} nombreSlot
+ * @returns {object[]}
+ */
+function paradasReconocidas(handlerInput, nombreSlot) {
+  const slot = handlerInput.requestEnvelope?.request?.intent?.slots?.[nombreSlot];
+  const valores = slot?.resolutions?.resolutionsPerAuthority?.[0]?.values || [];
+  const paradas = [];
+  for (const v of valores) {
+    const encontrada = catalogo.buscarParadas(v.name, { limite: 1 })[0]?.parada;
+    if (encontrada && !paradas.some((p) => p.id === encontrada.id)) paradas.push(encontrada);
+  }
+  return paradas;
 }
 
 /**
@@ -140,16 +172,16 @@ function pedirConfirmacion(handlerInput, resultado, accion) {
  * @returns {Promise<object>}
  */
 async function responderLlegadas(handlerInput, parada, opciones = {}) {
-  const { linea, limite, otrasLineas, prefijo } = opciones;
+  const { linea, limite, otrasLineas, prefijo, sugerirFavorita } = opciones;
   const etiqueta = etiquetaParada(parada);
   const resultado = await horarios.proximasLlegadas(parada.id, {
     linea,
-    limite: limite ?? 3,
+    limite: limite ?? (linea ? 2 : 3),
   });
 
-  const hablar = (texto) => handlerInput.responseBuilder
+  const hablar = (texto, reprompt = textos.repeticion) => handlerInput.responseBuilder
     .speak(prefijo ? `${prefijo} ${texto}` : texto)
-    .reprompt(textos.repeticion)
+    .reprompt(reprompt)
     .getResponse();
 
   if (resultado.aviso === 'lineaDesconocida') {
@@ -164,7 +196,7 @@ async function responderLlegadas(handlerInput, parada, opciones = {}) {
     if (!pasa) return hablar(textos.lineaNoPasa(linea, etiqueta));
   }
 
-  const extra = otrasLineas ? textos.otrasLineasEnParada : '';
+  let extra = otrasLineas ? textos.otrasLineasEnParada : '';
 
   if (resultado.llegadas.length === 0) {
     const mensaje = linea
@@ -177,7 +209,29 @@ async function responderLlegadas(handlerInput, parada, opciones = {}) {
   const hayTiempoReal = resultado.llegadas.some((l) => l.tiempoReal);
   const sufijo = hayTiempoReal ? '' : textos.avisoSinTiempoReal;
 
-  return hablar(`${textos.tituloLlegadas(etiqueta)} ${cuerpo}${sufijo}${extra}`);
+  let reprompt = textos.repeticion;
+  if (sugerirFavorita && marcarFavoritaSugerida(handlerInput, parada)) {
+    extra += ` ${textos.sugerirFavorita}`;
+    reprompt = textos.sugerirFavorita;
+  }
+
+  return hablar(`${textos.tituloLlegadas(etiqueta)} ${cuerpo}${sufijo}${extra}`, reprompt);
+}
+
+/**
+ * Plantea guardar una parada como favorita (solo una vez por sesión).
+ *
+ * @param {object} handlerInput
+ * @param {object} parada
+ * @returns {boolean}
+ */
+function marcarFavoritaSugerida(handlerInput, parada) {
+  const atributos = handlerInput.attributesManager.getSessionAttributes();
+  if (atributos.favoritaPreguntada) return false;
+  atributos.favoritaSugerida = { id: parada.id };
+  atributos.favoritaPreguntada = true;
+  handlerInput.attributesManager.setSessionAttributes(atributos);
+  return true;
 }
 
 /**
@@ -227,6 +281,7 @@ module.exports = {
   limpiarPendiente,
   pedirConfirmacion,
   responderLlegadas,
+  marcarFavoritaSugerida,
   leerFavorita,
   leerLineaFavorita,
   lineaPasaPorParada,

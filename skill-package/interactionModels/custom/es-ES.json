@@ -20,21 +20,38 @@
             "cuando pasa el proximo autobus en {parada}",
             "cuando pasa el autobus en {parada}",
             "cuando pasa el bus en {parada}",
+            "cuando pasa el proximo bus en {parada}",
+            "cuando pasa el proximo bus por {parada}",
+            "cuando pasa el autobus por {parada}",
+            "dime cuando pasa el autobus en {parada}",
+            "dime cuando pasa el autobus por {parada}",
+            "dime cuando pasa el proximo autobus en {parada}",
+            "dime a que hora pasa el autobus en {parada}",
             "a que hora pasa el proximo autobus en {parada}",
             "a que hora llega el proximo autobus a {parada}",
             "a que hora llega el autobus a {parada}",
             "proximo autobus en {parada}",
             "proximo autobus parada {parada}",
+            "proximo autobus por {parada}",
             "cuando llega el autobus a {parada}",
+            "cuando llega el proximo autobus a {parada}",
+            "cuando llega el proximo bus a {parada}",
             "cuanto falta para el proximo autobus en {parada}",
+            "cuanto falta para el proximo autobus en la parada {parada}",
             "cuando pasa el {linea} en la parada {parada}",
             "cuando pasa el {linea} por {parada}",
+            "cuando pasa el {linea} por la parada {parada}",
+            "cuando pasa el {linea} en {parada}",
             "cuando llega el {linea} a {parada}",
+            "cuando llega el {linea} a la parada {parada}",
+            "dime cuando pasa el {linea} en {parada}",
+            "dime cuando pasa el {linea} por {parada}",
+            "dime cuando pasa el {linea} por la parada {parada}",
+            "dime a que hora pasa el {linea} en {parada}",
             "a que hora pasa el {linea} en {parada}",
+            "a que hora llega el {linea} a {parada}",
             "proximo {linea} en {parada}",
-            "cuando pasa el {linea}",
-            "cuando pasa el proximo {linea}",
-            "proximo {linea}",
+            "proximo {linea} en la parada {parada}",
             "cuanto le queda a la linea {linea} para llegar a la parada {parada}",
             "cuanto le queda a la linea {linea} para llegar a {parada}",
             "cuanto le queda al {linea} para llegar a la parada {parada}",
@@ -43,17 +60,15 @@
             "cuanto falta para que llegue el {linea} a {parada}",
             "cuanto tarda el {linea} en llegar a la parada {parada}",
             "cuanto tarda el {linea} en llegar a {parada}",
-            "cuando llega el {linea} a la parada {parada}",
-            "cuando pasa el {linea} por la parada {parada}",
-            "a que hora llega el {linea} a la parada {parada}",
-            "a que hora pasa el {linea} en la parada {parada}",
-            "proximo {linea} en la parada {parada}",
             "que autobus de la linea {linea} pasa por la parada {parada}",
             "cuanto le queda a la linea {linea} para llegar a la parada numero {parada}",
             "cuando pasa el proximo autobus en la parada numero {parada}",
             "cuando llega el proximo autobus a la parada numero {parada}",
             "a que hora llega el proximo autobus a la parada numero {parada}",
             "proximo autobus en la parada numero {parada}",
+            "cuando pasa el {linea}",
+            "cuando pasa el proximo {linea}",
+            "proximo {linea}",
             "cuando pasa el {linea} por mi parada",
             "cuando pasa el {linea} en mi parada",
             "cuando llega el {linea} a mi parada",
@@ -71,21 +86,29 @@
           ],
           "samples": [
             "que lineas pasan por {parada}",
+            "que lineas pasan por la parada {parada}",
             "que autobuses pasan por {parada}",
+            "que autobuses pasan por la parada {parada}",
             "que lineas paran en {parada}",
+            "que lineas paran en la parada {parada}",
             "que autobuses paran en {parada}",
             "que lineas tiene la parada {parada}",
+            "que lineas tiene {parada}",
             "lineas de la parada {parada}",
+            "lineas de {parada}",
             "a donde puedo ir desde {parada}",
+            "a donde puedo ir desde la parada {parada}",
             "que lineas puedo coger en {parada}",
-            "que lineas pasan por la parada {parada}",
-            "que autobuses pasan por la parada {parada}",
-            "que lineas paran en la parada {parada}",
+            "que lineas puedo coger en la parada {parada}",
+            "dime que lineas pasan por {parada}",
+            "dime que lineas pasan por la parada {parada}",
             "lineas de la parada numero {parada}",
             "que lineas pasan por la parada numero {parada}",
             "que lineas pasan por mi parada",
             "que lineas tiene mi parada",
-            "que autobuses pasan por mi parada"
+            "que autobuses pasan por mi parada",
+            "que lineas paran en mi parada",
+            "que lineas puedo coger en mi parada"
           ]
         },
         {
@@ -103,7 +126,12 @@
             "recorrido de la linea {linea}",
             "por donde pasa la linea {linea}",
             "paradas de la linea {linea}",
-            "a donde va la linea {linea}"
+            "a donde va la linea {linea}",
+            "dime las paradas de la linea {linea}",
+            "dime por donde pasa la linea {linea}",
+            "que paradas tiene el {linea}",
+            "por donde pasa el {linea}",
+            "recorrido del {linea}"
           ]
         },
         {
@@ -116,11 +144,28 @@
           ],
           "samples": [
             "guarda {parada} como mi parada favorita",
+            "guarda la parada {parada} como mi parada favorita",
+            "agrega {parada} como mi parada favorita",
+            "agrega la parada {parada} como mi parada favorita",
+            "agrega {parada} a mi parada favorita",
+            "agrega la parada {parada} a mi parada favorita",
+            "agrega {parada} a favoritos",
+            "agrega la parada {parada} a favoritos",
+            "anade {parada} a mi parada favorita",
+            "anade la parada {parada} a mi parada favorita",
+            "anade {parada} a favoritos",
+            "anade la parada {parada} a favoritos",
             "mi parada favorita es {parada}",
             "configura {parada} como parada favorita",
+            "configura la parada {parada} como favorita",
             "quiero que mi parada sea {parada}",
+            "quiero que mi parada favorita sea {parada}",
             "guarda la parada {parada}",
-            "guarda la parada numero {parada} como mi parada favorita"
+            "guarda la parada numero {parada} como mi parada favorita",
+            "marca {parada} como mi parada favorita",
+            "marca la parada {parada} como favorita",
+            "pon {parada} como mi parada favorita",
+            "guarda {parada} en favoritos"
           ]
         },
         {
@@ -129,10 +174,17 @@
           "samples": [
             "cuando pasa el proximo autobus en mi parada",
             "cuando pasa el proximo autobus en mi parada favorita",
+            "cuando pasa el proximo bus en mi parada",
+            "cuando pasa el proximo autobus por mi parada",
             "proximo autobus en mi parada",
             "mi parada favorita",
+            "cual es mi parada favorita",
             "que parada tengo guardada",
-            "recuerdame mi parada favorita"
+            "recuerdame mi parada favorita",
+            "dime mi parada favorita",
+            "dime las llegadas en mi parada",
+            "dime cuando pasa el autobus en mi parada",
+            "dime cuando pasa el proximo autobus en mi parada"
           ]
         },
         {
@@ -145,9 +197,16 @@
           ],
           "samples": [
             "guarda la linea {linea} como mi linea favorita",
+            "guarda {linea} como mi linea favorita",
+            "agrega la linea {linea} a mi linea favorita",
+            "agrega la linea {linea} a favoritos",
+            "anade la linea {linea} a mi linea favorita",
+            "anade la linea {linea} a favoritos",
             "mi linea favorita es la {linea}",
             "configura la linea {linea} como mi linea favorita",
-            "quiero que mi linea favorita sea la {linea}"
+            "quiero que mi linea favorita sea la {linea}",
+            "marca la linea {linea} como favorita",
+            "guarda el {linea} como mi linea favorita"
           ]
         },
         {
@@ -157,7 +216,8 @@
             "cual es mi linea favorita",
             "que linea tengo guardada",
             "mi linea favorita",
-            "recuerdame mi linea favorita"
+            "recuerdame mi linea favorita",
+            "dime mi linea favorita"
           ]
         },
         {
@@ -166,7 +226,10 @@
           "samples": [
             "olvida mi parada favorita",
             "quita mi parada favorita",
-            "borra mi parada favorita"
+            "borra mi parada favorita",
+            "elimina mi parada favorita",
+            "ya no quiero tener parada favorita",
+            "borra la parada favorita"
           ]
         },
         {
@@ -175,7 +238,10 @@
           "samples": [
             "olvida mi linea favorita",
             "quita mi linea favorita",
-            "borra mi linea favorita"
+            "borra mi linea favorita",
+            "elimina mi linea favorita",
+            "ya no quiero tener linea favorita",
+            "borra la linea favorita"
           ]
         },
         {
@@ -191,7 +257,9 @@
             "dime el recorrido completo de la linea {linea}",
             "todas las paradas de la linea {linea}",
             "el recorrido entero de la linea {linea}",
-            "recorrido completo de la {linea}"
+            "recorrido completo de la {linea}",
+            "dime todas las paradas de la linea {linea}",
+            "quiero el recorrido completo de la linea {linea}"
           ]
         },
         {

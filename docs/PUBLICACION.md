@@ -14,7 +14,7 @@ que las skills hospedadas se despliegan con git).
   ```bash
   cd lambda && npm install && cd ..
   npm run preparar:offline   # o `npm run preparar` para descargar el GTFS
-  npm test                   # 44/44
+  npm test                   # 45/45
   ```
 
 ---

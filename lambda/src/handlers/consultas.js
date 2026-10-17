@@ -46,7 +46,11 @@ const ConsultarLlegadasIntentHandler = {
         .getResponse();
     }
 
-    return comun.responderLlegadas(handlerInput, resultado.parada, { linea });
+    const favorita = await comun.leerFavorita(handlerInput);
+    return comun.responderLlegadas(handlerInput, resultado.parada, {
+      linea,
+      sugerirFavorita: !favorita,
+    });
   },
 };
 
@@ -78,15 +82,17 @@ const ConsultarLineasEnParadaIntentHandler = {
       return handlerInput.responseBuilder.speak(mensaje).reprompt(textos.sinParada).getResponse();
     }
 
-    return respuestaLineasEnParada(handlerInput, resultado.parada);
+    const favorita = await comun.leerFavorita(handlerInput);
+    return respuestaLineasEnParada(handlerInput, resultado.parada, { sugerirFavorita: !favorita });
   },
 };
 
 /**
  * @param {object} handlerInput
  * @param {object} parada
+ * @param {{sugerirFavorita?: boolean}} [opciones]
  */
-function respuestaLineasEnParada(handlerInput, parada) {
+function respuestaLineasEnParada(handlerInput, parada, opciones = {}) {
   const etiqueta = comun.etiquetaParada(parada);
   const lineas = catalogo.lineasEnParada(parada.id);
   if (lineas.length === 0) {
@@ -101,9 +107,16 @@ function respuestaLineasEnParada(handlerInput, parada) {
     ? codigos.join('')
     : `${codigos.slice(0, -1).join(', ')} y ${codigos[codigos.length - 1]}`;
 
+  let extra = '';
+  let reprompt = textos.repeticion;
+  if (opciones.sugerirFavorita && comun.marcarFavoritaSugerida(handlerInput, parada)) {
+    extra = ` ${textos.sugerirFavorita}`;
+    reprompt = textos.sugerirFavorita;
+  }
+
   return handlerInput.responseBuilder
-    .speak(textos.lineasEnParada(etiqueta, listado))
-    .reprompt(textos.repeticion)
+    .speak(`${textos.lineasEnParada(etiqueta, listado)}${extra}`)
+    .reprompt(reprompt)
     .getResponse();
 }
 
