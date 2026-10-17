@@ -1,0 +1,35 @@
+# ---------------------------------------------------------------- secretos --
+# Nunca subimos credenciales. Usa .env.example como plantilla.
+.env
+.env.*
+!.env.example
+
+# ------------------------------------------------------------------- node --
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json.bak
+
+# --------------------------------------------------------------- ASK CLI --
+# Ficheros locales que genera `ask init` / `ask deploy`.
+.ask/
+.askrc
+ask-resources.json.bak
+
+# -------------------------------------------------------------- temporales --
+*.log
+*.tmp
+.DS_Store
+/tmp/
+
+# ------------------------------------------------------------------ datos --
+# Caché del GTFS descargado (se regenera con `npm run datos`).
+# Los JSON de lambda/data/ SÍ se versionan: son el resultado reproducible del
+# build y permiten desplegar sin volver a descargar el GTFS.
+tools/gtfs/
+
+# ------------------------------------------------------- documentos internos --
+# Notas de traspaso para el autor y los agentes de IA. No forman parte del
+# proyecto público: el contenido para colaboradores está en README.md y docs/.
+AGENTS.md
+docs/TRASPASO.md

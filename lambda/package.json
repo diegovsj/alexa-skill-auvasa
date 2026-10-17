@@ -1,0 +1,17 @@
+{
+  "name": "alexa-skill-auvasa-lambda",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Backend (AWS Lambda) de la skill de Alexa AUVASA",
+  "main": "index.js",
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "ask-sdk-core": "^2.14.0",
+    "ask-sdk-model": "^1.86.0"
+  },
+  "devDependencies": {
+    "ask-sdk-local-debug": "^1.1.0"
+  }
+}

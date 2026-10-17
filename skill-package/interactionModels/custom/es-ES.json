@@ -1,0 +1,5992 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "auvasa",
+      "intents": [
+        {
+          "name": "ConsultarLlegadasIntent",
+          "slots": [
+            {
+              "name": "parada",
+              "type": "PARADA"
+            },
+            {
+              "name": "linea",
+              "type": "LINEA"
+            }
+          ],
+          "samples": [
+            "cuando pasa el proximo autobus en la parada {parada}",
+            "cuando pasa el proximo autobus en {parada}",
+            "cuando pasa el autobus en {parada}",
+            "cuando pasa el bus en {parada}",
+            "a que hora pasa el proximo autobus en {parada}",
+            "a que hora llega el proximo autobus a {parada}",
+            "a que hora llega el autobus a {parada}",
+            "proximo autobus en {parada}",
+            "proximo autobus parada {parada}",
+            "cuando llega el autobus a {parada}",
+            "cuanto falta para el proximo autobus en {parada}",
+            "cuando pasa el {linea} en la parada {parada}",
+            "cuando pasa el {linea} por {parada}",
+            "cuando llega el {linea} a {parada}",
+            "a que hora pasa el {linea} en {parada}",
+            "proximo {linea} en {parada}",
+            "cuando pasa el {linea}",
+            "cuando pasa el proximo {linea}",
+            "proximo {linea}",
+            "cuanto le queda a la linea {linea} para llegar a la parada {parada}",
+            "cuanto le queda a la linea {linea} para llegar a {parada}",
+            "cuanto le queda al {linea} para llegar a la parada {parada}",
+            "cuanto le queda al {linea} para llegar a {parada}",
+            "cuanto falta para que llegue el {linea} a la parada {parada}",
+            "cuanto falta para que llegue el {linea} a {parada}",
+            "cuanto tarda el {linea} en llegar a la parada {parada}",
+            "cuanto tarda el {linea} en llegar a {parada}",
+            "cuando llega el {linea} a la parada {parada}",
+            "cuando pasa el {linea} por la parada {parada}",
+            "a que hora llega el {linea} a la parada {parada}",
+            "a que hora pasa el {linea} en la parada {parada}",
+            "proximo {linea} en la parada {parada}",
+            "que autobus de la linea {linea} pasa por la parada {parada}",
+            "cuanto le queda a la linea {linea} para llegar a la parada numero {parada}",
+            "cuando pasa el proximo autobus en la parada numero {parada}",
+            "cuando llega el proximo autobus a la parada numero {parada}",
+            "a que hora llega el proximo autobus a la parada numero {parada}",
+            "proximo autobus en la parada numero {parada}"
+          ]
+        },
+        {
+          "name": "ConsultarLineasEnParadaIntent",
+          "slots": [
+            {
+              "name": "parada",
+              "type": "PARADA"
+            }
+          ],
+          "samples": [
+            "que lineas pasan por {parada}",
+            "que autobuses pasan por {parada}",
+            "que lineas paran en {parada}",
+            "que autobuses paran en {parada}",
+            "que lineas tiene la parada {parada}",
+            "lineas de la parada {parada}",
+            "a donde puedo ir desde {parada}",
+            "que lineas puedo coger en {parada}",
+            "que lineas pasan por la parada {parada}",
+            "que autobuses pasan por la parada {parada}",
+            "que lineas paran en la parada {parada}",
+            "lineas de la parada numero {parada}",
+            "que lineas pasan por la parada numero {parada}"
+          ]
+        },
+        {
+          "name": "ConsultarParadasDeLineaIntent",
+          "slots": [
+            {
+              "name": "linea",
+              "type": "LINEA"
+            }
+          ],
+          "samples": [
+            "por que paradas pasa la linea {linea}",
+            "que paradas tiene la linea {linea}",
+            "que paradas hace la linea {linea}",
+            "recorrido de la linea {linea}",
+            "por donde pasa la linea {linea}",
+            "paradas de la linea {linea}",
+            "a donde va la linea {linea}"
+          ]
+        },
+        {
+          "name": "GuardarParadaFavoritaIntent",
+          "slots": [
+            {
+              "name": "parada",
+              "type": "PARADA"
+            }
+          ],
+          "samples": [
+            "guarda {parada} como mi parada favorita",
+            "mi parada favorita es {parada}",
+            "configura {parada} como parada favorita",
+            "quiero que mi parada sea {parada}",
+            "guarda la parada {parada}",
+            "guarda la parada numero {parada} como mi parada favorita"
+          ]
+        },
+        {
+          "name": "ConsultarParadaFavoritaIntent",
+          "slots": [],
+          "samples": [
+            "cuando pasa el proximo autobus en mi parada",
+            "cuando pasa el proximo autobus en mi parada favorita",
+            "proximo autobus en mi parada",
+            "mi parada favorita",
+            "que parada tengo guardada",
+            "recuerdame mi parada favorita"
+          ]
+        },
+        {
+          "name": "AyudaIntent",
+          "slots": [],
+          "samples": [
+            "ayuda",
+            "que puedo decir",
+            "como funciona"
+          ]
+        },
+        {
+          "name": "AMAZON.HelpIntent"
+        },
+        {
+          "name": "AMAZON.CancelIntent"
+        },
+        {
+          "name": "AMAZON.StopIntent"
+        },
+        {
+          "name": "AMAZON.FallbackIntent"
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent"
+        },
+        {
+          "name": "AMAZON.YesIntent"
+        },
+        {
+          "name": "AMAZON.NoIntent"
+        }
+      ],
+      "types": [
+        {
+          "name": "PARADA",
+          "values": [
+            {
+              "name": {
+                "value": "Paseo Zorrilla 198 La Rubia",
+                "synonyms": [
+                  "Zorrilla 198 La Rubia",
+                  "Zorrilla 198",
+                  "1000"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 238 Centro Comercial",
+                "synonyms": [
+                  "Zorrilla 238 Centro Comercial",
+                  "Zorrilla 238",
+                  "1001"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 39 esquina Puente Colgante",
+                "synonyms": [
+                  "Paseo Zorrilla 39",
+                  "Zorrilla 39",
+                  "1002"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 52 esquina Paseo Hospital Militar",
+                "synonyms": [
+                  "Paseo Zorrilla 52",
+                  "Zorrilla 52",
+                  "1003"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Lucio Zumel esquina Avenida Soria",
+                "synonyms": [
+                  "Calle Lucio Zumel",
+                  "Lucio Zumel",
+                  "1006"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Doctrinos 12 esquina María de Molina",
+                "synonyms": [
+                  "Calle Doctrinos 12",
+                  "Doctrinos 12",
+                  "1007"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 187 esquina Vinos Vega Sicilia",
+                "synonyms": [
+                  "Paseo Zorrilla 187",
+                  "Zorrilla 187",
+                  "1038"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 346 esquina Vinos Ribera de Duero",
+                "synonyms": [
+                  "Paseo Zorrilla 346",
+                  "Zorrilla 346",
+                  "1039"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 203 esquina Vinos de Cigales",
+                "synonyms": [
+                  "Paseo Zorrilla 203",
+                  "Zorrilla 203",
+                  "1043"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 364 esquina Vinos de Rueda",
+                "synonyms": [
+                  "Paseo Zorrilla 364",
+                  "Zorrilla 364",
+                  "1044"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Santiago Alba 3",
+                "synonyms": [
+                  "Santiago Alba 3",
+                  "1055"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real 74 frente Vinos Ribera de Duero",
+                "synonyms": [
+                  "Cañada Real 74",
+                  "Real 74",
+                  "1065"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real 144 esquina Vega de Valdetronco",
+                "synonyms": [
+                  "Cañada Real 144",
+                  "Real 144",
+                  "1066"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real 67 esquina Vinos Ribera de Duero",
+                "synonyms": [
+                  "Cañada Real 67",
+                  "Real 67",
+                  "1067"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real 131 esquina Vinos de Rueda",
+                "synonyms": [
+                  "Cañada Real 131",
+                  "Real 131",
+                  "1068"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Portillo Balboa frente 60 esquina Amor de Dios",
+                "synonyms": [
+                  "Calle Portillo Balboa",
+                  "Portillo Balboa",
+                  "1073"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente Urb. Santa Ana",
+                "synonyms": [
+                  "1080"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas Urb. Santa Ana",
+                "synonyms": [
+                  "Viejo Simancas Urb Santa Ana",
+                  "1081"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Anselmo Miguel Nieto esquina Carretera Rueda",
+                "synonyms": [
+                  "1082"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Santiago Alba 18",
+                "synonyms": [
+                  "Santiago Alba 18",
+                  "1085"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Lorenzo Arrazola frente Manuel Mucientes",
+                "synonyms": [
+                  "1086"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Lorenzo Arrazola esquina Manuel Mucientes",
+                "synonyms": [
+                  "1087"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Anselmo Miguel Nieto esquina Puertas de Valladolid",
+                "synonyms": [
+                  "1088"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera a Viana Urb. El Pinarillo.",
+                "synonyms": [
+                  "a Viana Urb El Pinarillo",
+                  "1089"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Peseta esquina Avenida Burgos",
+                "synonyms": [
+                  "Calle Peseta",
+                  "1090"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Peseta Punto Limpio",
+                "synonyms": [
+                  "Peseta Punto Limpio",
+                  "1091"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Euro frente Mercaolid",
+                "synonyms": [
+                  "Avenida Euro",
+                  "1092"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Euro Mercaolid",
+                "synonyms": [
+                  "Euro Mercaolid",
+                  "1093"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Viana esquina Cañada Valdestillas",
+                "synonyms": [
+                  "Carretera Viana",
+                  "1094"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Juan Carlos I frente Bomberos Delicias",
+                "synonyms": [
+                  "1102"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle General Shelly 18 esquina Avenida Segovia",
+                "synonyms": [
+                  "Calle General Shelly 18",
+                  "General Shelly 18",
+                  "1105"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Eusebio González Suárez frente Federico Landrove Moiño",
+                "synonyms": [
+                  "Calle Eusebio González Suárez",
+                  "Eusebio González Suárez",
+                  "1109"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Manuel Azaña 37",
+                "synonyms": [
+                  "Manuel Azaña 37",
+                  "1110"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Manuel Azaña esquina Juan García Hortelano",
+                "synonyms": [
+                  "Calle Manuel Azaña",
+                  "Manuel Azaña",
+                  "1113"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Hernando de Acuña esquina Manuel Azaña",
+                "synonyms": [
+                  "1114"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Hernando de Acuña 45 Bis",
+                "synonyms": [
+                  "Hernando de Acuña 45 Bis",
+                  "Hernando de Acuña 45",
+                  "1115"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Hernando de Acuña 42",
+                "synonyms": [
+                  "Hernando de Acuña 42",
+                  "1116"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Hernando de Acuña esquina Padre Llanos",
+                "synonyms": [
+                  "1117"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Manuel Azaña 24 frente Juan García Hortelano",
+                "synonyms": [
+                  "Calle Manuel Azaña 24",
+                  "Manuel Azaña 24",
+                  "1118"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Manuel Azaña 56",
+                "synonyms": [
+                  "Manuel Azaña 56",
+                  "1119"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Federico Landrove Moiño 11",
+                "synonyms": [
+                  "Federico Landrove Moiño 11",
+                  "1120"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Isabel La Católica 1 esquina 20 de Febrero",
+                "synonyms": [
+                  "Paseo Isabel La Católica 1",
+                  "Isabel La Católica 1",
+                  "1127"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Fuensaldaña frente Subida Fuente el Sol",
+                "synonyms": [
+                  "1128"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Fuente del Berrocal Gasolinera",
+                "synonyms": [
+                  "Fuente del Berrocal Gasolinera",
+                  "1129"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle El Barbero de Sevilla esquina Plaza de la Ópera",
+                "synonyms": [
+                  "1130"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Tirso de Molina frente Seminario",
+                "synonyms": [
+                  "Calle Tirso de Molina",
+                  "Tirso de Molina",
+                  "1141"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda frente 53 Imserso",
+                "synonyms": [
+                  "1150"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda 81 esquina Tierra de Sepúlveda",
+                "synonyms": [
+                  "Carretera Rueda 81",
+                  "Rueda 81",
+                  "1151"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Sotavento esquina Colombia",
+                "synonyms": [
+                  "1153"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Santa Clara 34 esquina Real de Burgos",
+                "synonyms": [
+                  "Calle Santa Clara 34",
+                  "Santa Clara 34",
+                  "1155"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Acera Recoletos frente 2 esquina Pza Zorrilla",
+                "synonyms": [
+                  "Calle Acera Recoletos",
+                  "Acera Recoletos",
+                  "1156"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Chancillería 5",
+                "synonyms": [
+                  "Chancillería 5",
+                  "1158"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Colón 14",
+                "synonyms": [
+                  "Colón 14",
+                  "1159"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Arca Real frente 163",
+                "synonyms": [
+                  "1161"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Estación del Norte RENFE",
+                "synonyms": [
+                  "Estación del Norte RENFE",
+                  "1163"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Jardín Botánico esquina Brezo",
+                "synonyms": [
+                  "1164"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Jara esquina Hierbabuena",
+                "synonyms": [
+                  "Calle Jara",
+                  "1165"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Salamanca esquina Doctor Villacián",
+                "synonyms": [
+                  "1166"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Vinos de Rueda esquina Cañada Real",
+                "synonyms": [
+                  "Calle Vinos de Rueda",
+                  "Vinos de Rueda",
+                  "1167"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas 15 esquina Vereda",
+                "synonyms": [
+                  "Camino Viejo Simancas 15",
+                  "Viejo Simancas 15",
+                  "1168"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Salamanca esquina Puente Juan de Austria",
+                "synonyms": [
+                  "1169"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Santa María de la Cabeza frente 39",
+                "synonyms": [
+                  "1170"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Santa María de la Cabeza 39",
+                "synonyms": [
+                  "Santa María de la Cabeza 39",
+                  "1171"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Santa María de la Cabeza 9",
+                "synonyms": [
+                  "Santa María de la Cabeza 9",
+                  "1172"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Santa María de la Cabeza frente 9",
+                "synonyms": [
+                  "1173"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cádiz 4 esquina Bilbao",
+                "synonyms": [
+                  "Calle Cádiz 4",
+                  "Cádiz 4",
+                  "1175"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Juan Carlos I esquina Abejaruco",
+                "synonyms": [
+                  "1176"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo del Polvorín 12",
+                "synonyms": [
+                  "Viejo del Polvorín 12",
+                  "1177"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo del Polvorín esquina Villabáñez",
+                "synonyms": [
+                  "Camino Viejo del Polvorín",
+                  "Viejo del Polvorín",
+                  "1178"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Poniente frente Jorge Guillén",
+                "synonyms": [
+                  "Plaza Poniente",
+                  "1181"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Filipinos esquina Paseo Zorrilla",
+                "synonyms": [
+                  "Paseo Filipinos",
+                  "1185"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cádiz 15",
+                "synonyms": [
+                  "Cádiz 15",
+                  "1187"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Fuensaldaña esquina Subida Fuente el Sol",
+                "synonyms": [
+                  "1189"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Fuente del Berrocal frente Gasolinera",
+                "synonyms": [
+                  "Calle Fuente del Berrocal",
+                  "Fuente del Berrocal",
+                  "1190"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Valle Esgueva frente 81 esquina Incienso",
+                "synonyms": [
+                  "Avenida Valle Esgueva",
+                  "Valle Esgueva",
+                  "1191"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Málaga esquina Bilbao",
+                "synonyms": [
+                  "Calle Málaga",
+                  "1192"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Sementera esquina Mieses",
+                "synonyms": [
+                  "Calle Sementera",
+                  "1193"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Topacio frente 33",
+                "synonyms": [
+                  "1194"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Topacio 2",
+                "synonyms": [
+                  "Topacio 2",
+                  "1195"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Topacio 39",
+                "synonyms": [
+                  "Topacio 39",
+                  "1196"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cardenal Torquemada frente Polideportivo Rondilla",
+                "synonyms": [
+                  "1201"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Valle de Arán 48",
+                "synonyms": [
+                  "Valle de Arán 48",
+                  "1202"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Valle de Arán 76 esquina Costa Brava",
+                "synonyms": [
+                  "Calle Valle de Arán 76",
+                  "Valle de Arán 76",
+                  "1203"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Costa Brava Centro Comercial",
+                "synonyms": [
+                  "Costa Brava Centro Comercial",
+                  "1204"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Costa Brava 1 esquina Costa Dorada",
+                "synonyms": [
+                  "Calle Costa Brava 1",
+                  "Costa Brava 1",
+                  "1205"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Valle de Arán frente 40",
+                "synonyms": [
+                  "Calle Valle de Arán",
+                  "Valle de Arán",
+                  "1206"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Miguel Ruiz Temiño esquina Juan Carlos I sent. Centro",
+                "synonyms": [
+                  "Calle Miguel Ruiz Temiño",
+                  "Miguel Ruiz Temiño",
+                  "1207"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Miguel Ruiz de Temiño esquina Juan Carlos I",
+                "synonyms": [
+                  "Calle Miguel Ruiz de Temiño",
+                  "Miguel Ruiz de Temiño",
+                  "1208"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Armonio 3 esquina Laúd",
+                "synonyms": [
+                  "Calle Armonio 3",
+                  "Armonio 3",
+                  "1209"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle La Flauta Mágica esquina Electra",
+                "synonyms": [
+                  "Calle La Flauta Mágica",
+                  "La Flauta Mágica",
+                  "1215"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Príncipe Ígor esquina La Flauta Mágica",
+                "synonyms": [
+                  "Calle Príncipe Ígor",
+                  "Príncipe Ígor",
+                  "1216"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Pesqueruela frente 1 esquina Carretera PuenteDuero",
+                "synonyms": [
+                  "Carretera Pesqueruela",
+                  "1218"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Entrepinos 57",
+                "synonyms": [
+                  "Entrepinos 57",
+                  "1219"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Miguel de Cervantes en Aparcamiento",
+                "synonyms": [
+                  "Miguel de Cervantes en Aparcamiento",
+                  "1220"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Pesqueruela 1 esquina Carretera a Puente Duero",
+                "synonyms": [
+                  "Carretera Pesqueruela 1",
+                  "Pesqueruela 1",
+                  "1222"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Mundial 82 frente Estadio José Zorrilla",
+                "synonyms": [
+                  "Avenida Mundial 82",
+                  "12234"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Entrepinos 52 esquina Tirso de Molina",
+                "synonyms": [
+                  "Avenida Entrepinos 52",
+                  "Entrepinos 52",
+                  "1227"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 10",
+                "synonyms": [
+                  "Zorrilla 10",
+                  "1228"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas 167 esquina José Velicia",
+                "synonyms": [
+                  "Camino Viejo Simancas 167",
+                  "Viejo Simancas 167",
+                  "1233"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente 167 esquina Barcelona",
+                "synonyms": [
+                  "1234"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Alamillos 11",
+                "synonyms": [
+                  "Alamillos 11",
+                  "1235"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Adolfo Miaja de la Muela frente Padre Llanos",
+                "synonyms": [
+                  "1237"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Adolfo Miaja de la Muela esquina Padre Llanos",
+                "synonyms": [
+                  "1238"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Adolfo Miaja de la Muela Residencia Doctor Villacián",
+                "synonyms": [
+                  "Adolfo Miaja de la Muela Residencia Doctor Villacián",
+                  "1239"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Mieses esquina Barbecho",
+                "synonyms": [
+                  "1247"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Mieses esquina Monasterio Santa María Retuerta",
+                "synonyms": [
+                  "1248"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Monasterio SanLorenzoEscorial esquina MonasterioYuste",
+                "synonyms": [
+                  "1249"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Monasterio SanLorenzoEscorial esquina SanEstebanGormaz",
+                "synonyms": [
+                  "1250"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Monasterio SantoDomingoSilos frente5 esquinaMontserrat",
+                "synonyms": [
+                  "Monasterio SantoDomingoSilos frente5 esquinaMontserrat",
+                  "Monasterio SantoDomingoSilos frente5",
+                  "1254"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle MonasterioYuste fte. 28 esq. Mon.SanLorenzoEscorial",
+                "synonyms": [
+                  "MonasterioYuste fte 28 esq Mon SanLorenzoEscorial",
+                  "MonasterioYuste fte 28",
+                  "1255"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle MonasterioYuste 28 esquina MonSanLorenzoEscorial",
+                "synonyms": [
+                  "Calle MonasterioYuste 28",
+                  "MonasterioYuste 28",
+                  "1256"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle MonasterioSanLorenzoEscorial C.CulturalMiguelDelibes",
+                "synonyms": [
+                  "MonasterioSanLorenzoEscorial C CulturalMiguelDelibes",
+                  "1257"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Mon.SanLorenzoEscorial frenteC.CulturalMiguelDelibes",
+                "synonyms": [
+                  "Mon SanLorenzoEscorial frenteC CulturalMiguelDelibes",
+                  "1258"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Joaquín Velasco Martín 108 frente col. María Molina",
+                "synonyms": [
+                  "Calle Joaquín Velasco Martín 108",
+                  "Joaquín Velasco Martín 108",
+                  "1259"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Martín Santos Romero 60",
+                "synonyms": [
+                  "Martín Santos Romero 60",
+                  "1261"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Martín Santos Romero esq. José María Castilviejo",
+                "synonyms": [
+                  "Martín Santos Romero esq José María Castilviejo",
+                  "1262"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Felipe Ruiz Martín 6",
+                "synonyms": [
+                  "Felipe Ruiz Martín 6",
+                  "1264"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Felipe Ruiz Martín esquina Manuel Canesí Acevedo",
+                "synonyms": [
+                  "1265"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Salamanca Puente de La Hispanidad",
+                "synonyms": [
+                  "Salamanca Puente de La Hispanidad",
+                  "1266"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Felipe Ruiz Martín frente Manuel Canesí Acevedo",
+                "synonyms": [
+                  "1268"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Felipe Ruiz Martín IES José Jimenez Lozano",
+                "synonyms": [
+                  "Felipe Ruiz Martín IES José Jimenez Lozano",
+                  "1269"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Puente Juan de Austria esquina Avenida Salamanca",
+                "synonyms": [
+                  "Puente Juan de Austria",
+                  "1273"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Martín Santos Romero frente 62",
+                "synonyms": [
+                  "1276"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Martín Santos Romero Campo José Luis Saso",
+                "synonyms": [
+                  "Martín Santos Romero Campo José Luis Saso",
+                  "1277"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Martín Santos Romero frente Campo José Luis Saso",
+                "synonyms": [
+                  "1278"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla frente 10 Campo Grande",
+                "synonyms": [
+                  "Paseo Zorrilla",
+                  "1279"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Arco Ladrillo 50 esquina Adolfo Suarez",
+                "synonyms": [
+                  "Paseo Arco Ladrillo 50",
+                  "Arco Ladrillo 50",
+                  "1281"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Arco Ladrillo 68",
+                "synonyms": [
+                  "Arco Ladrillo 68",
+                  "1282"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Arco Ladrillo frente Transición",
+                "synonyms": [
+                  "1283"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Padre Benito Menni frente 6 esquina Caamaño",
+                "synonyms": [
+                  "1287"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Arco Ladrillo esquina Transición",
+                "synonyms": [
+                  "1288"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Arco Ladrillo 49 esquina General Shelly",
+                "synonyms": [
+                  "Paseo Arco Ladrillo 49",
+                  "Arco Ladrillo 49",
+                  "1289"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Kilimanjaro 1 esquina Peñalara",
+                "synonyms": [
+                  "Calle Kilimanjaro 1",
+                  "Kilimanjaro 1",
+                  "1290"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Topacio 61 esquina Plomo",
+                "synonyms": [
+                  "Calle Topacio 61",
+                  "Topacio 61",
+                  "1296"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Oro frente 4",
+                "synonyms": [
+                  "Calle Oro",
+                  "1309"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida de los Álamos fte.Hotel",
+                "synonyms": [
+                  "de los Álamos fte Hotel",
+                  "131"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Oro 4",
+                "synonyms": [
+                  "Oro 4",
+                  "1310"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Pirita 67",
+                "synonyms": [
+                  "Pirita 67",
+                  "1311"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Pirita frente 67",
+                "synonyms": [
+                  "1312"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Víctimas del Terrorismo Hospital Río Hortega",
+                "synonyms": [
+                  "Víctimas del Terrorismo Hospital Río Hortega",
+                  "1314"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Pirita 13 frente Esmeralda",
+                "synonyms": [
+                  "Calle Pirita 13",
+                  "Pirita 13",
+                  "1315"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Pirita esquina Esmeralda",
+                "synonyms": [
+                  "1316"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Dulzaina frente 2 frente Hospital Río Hortega",
+                "synonyms": [
+                  "1317"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Dulzaina 2 Hospital Río Hortega",
+                "synonyms": [
+                  "Dulzaina 2 Hospital Río Hortega",
+                  "Dulzaina 2",
+                  "1318"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Segovia esquina Víctimas del Terrorismo",
+                "synonyms": [
+                  "1319"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza del Olivo",
+                "synonyms": [
+                  "del Olivo",
+                  "132"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Víctimas del Terrorismo esquina Carretera Segovia",
+                "synonyms": [
+                  "Calle Víctimas del Terrorismo",
+                  "Víctimas del Terrorismo",
+                  "1320"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Carraca frente 41 esquina Avenida Soria",
+                "synonyms": [
+                  "Calle Carraca",
+                  "1321"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Embajadores 71",
+                "synonyms": [
+                  "Embajadores 71",
+                  "1322"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Salamanca frente Puente de La Hispanidad",
+                "synonyms": [
+                  "1323"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Salamanca esquina Santiago López González",
+                "synonyms": [
+                  "1324"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Salamanca esquina Fray Antonio de Córdoba",
+                "synonyms": [
+                  "1325"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Topacio 42 frente Plomo",
+                "synonyms": [
+                  "Calle Topacio 42",
+                  "Topacio 42",
+                  "1326"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Plomo 1",
+                "synonyms": [
+                  "Plomo 1",
+                  "1327"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Plomo 2",
+                "synonyms": [
+                  "Plomo 2",
+                  "1328"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Helio 4 esquina Acetileno",
+                "synonyms": [
+                  "Calle Helio 4",
+                  "Helio 4",
+                  "1329"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "P. de la Acacia esquina Olmo",
+                "synonyms": [
+                  "P de la Acacia",
+                  "133"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Helio 20 esquina Oxígeno",
+                "synonyms": [
+                  "Calle Helio 20",
+                  "Helio 20",
+                  "1330"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Helio 3 esquina Acetileno",
+                "synonyms": [
+                  "Calle Helio 3",
+                  "Helio 3",
+                  "1331"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Helio 15",
+                "synonyms": [
+                  "Helio 15",
+                  "1332"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Helio esquina Nitrógeno",
+                "synonyms": [
+                  "Calle Helio",
+                  "1333"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Castañuelas esquina Carraca",
+                "synonyms": [
+                  "Calle Castañuelas",
+                  "1334"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Armonio 26 esquina Castañuelas",
+                "synonyms": [
+                  "Calle Armonio 26",
+                  "Armonio 26",
+                  "1335"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Juan Carlos I 19 esquina Delicias",
+                "synonyms": [
+                  "Paseo Juan Carlos I 19",
+                  "Juan Carlos I 19",
+                  "1336"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Juan Carlos I frente 29 Colegio Pablo Picasso",
+                "synonyms": [
+                  "1337"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Juan Carlos I 20 esquina General Shelly",
+                "synonyms": [
+                  "Paseo Juan Carlos I 20",
+                  "Juan Carlos I 20",
+                  "1338"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Plata 43",
+                "synonyms": [
+                  "Plata 43",
+                  "1340"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Plata 58 esquina Galena",
+                "synonyms": [
+                  "Calle Plata 58",
+                  "Plata 58",
+                  "1341"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Panaderos 4 esquina Divina Pastora",
+                "synonyms": [
+                  "Calle Panaderos 4",
+                  "Panaderos 4",
+                  "1344"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 71 esquina Arzobispo García Goldáraz",
+                "synonyms": [
+                  "Paseo Zorrilla 71",
+                  "Zorrilla 71",
+                  "1346"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Puente Colgante 47",
+                "synonyms": [
+                  "Puente Colgante 47",
+                  "1347"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Embajadores esquina Padre Benito Menni",
+                "synonyms": [
+                  "1348"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente Puente",
+                "synonyms": [
+                  "1350"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Segovia frente Víctimas del Terrorismo",
+                "synonyms": [
+                  "1351"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cometa esq. Pº Juan carlos 1",
+                "synonyms": [
+                  "Cometa esq Pº Juan carlos 1",
+                  "1354"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cometa 4",
+                "synonyms": [
+                  "Cometa 4",
+                  "1356"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Belén Campus Miguel Delibes",
+                "synonyms": [
+                  "Belén Campus Miguel Delibes",
+                  "1358"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Kilimanjaro 2",
+                "synonyms": [
+                  "Kilimanjaro 2",
+                  "1360"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Kilimanjaro frente 39",
+                "synonyms": [
+                  "Calle Kilimanjaro",
+                  "1361"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Dulzaina esquina Arribes del Duero",
+                "synonyms": [
+                  "1362"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Dulzaina esquina Palillos",
+                "synonyms": [
+                  "1363"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Plata 41A gasolinera",
+                "synonyms": [
+                  "Plata 41A gasolinera",
+                  "1364"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Francisco Umbral 7",
+                "synonyms": [
+                  "Francisco Umbral 7",
+                  "1365"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Francisco Umbral 8",
+                "synonyms": [
+                  "Francisco Umbral 8",
+                  "1366"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Verbena esquina Nicasio Pérez",
+                "synonyms": [
+                  "Calle Verbena",
+                  "1368"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Júpiter frente 12 esquina Comuneros de Castilla",
+                "synonyms": [
+                  "Calle Júpiter",
+                  "1369"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Castilla y León 4 esquina Miguel Delibes",
+                "synonyms": [
+                  "Plaza Castilla y León 4",
+                  "Castilla y León 4",
+                  "1370"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza San Pablo 2 esquina San Quirce",
+                "synonyms": [
+                  "Plaza San Pablo 2",
+                  "San Pablo 2",
+                  "1371"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Miguel Delibes 14",
+                "synonyms": [
+                  "Miguel Delibes 14",
+                  "1372"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Miguel Delibes 1",
+                "synonyms": [
+                  "Miguel Delibes 1",
+                  "1373"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Las Contiendas 97",
+                "synonyms": [
+                  "Las Contiendas 97",
+                  "1374"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Fuente El Sol 50 esquina San Sebastián",
+                "synonyms": [
+                  "Calle Fuente El Sol 50",
+                  "Fuente El Sol 50",
+                  "1375"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Arco Ladrillo 3 esquina Aragón",
+                "synonyms": [
+                  "Paseo Arco Ladrillo 3",
+                  "Arco Ladrillo 3",
+                  "1378"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Arco Ladrillo 8 esquina Paseo Hosp. Militar",
+                "synonyms": [
+                  "Paseo Arco Ladrillo 8",
+                  "Arco Ladrillo 8",
+                  "1379"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle El Barbero de Sevilla esquina Flauta Mágica",
+                "synonyms": [
+                  "1380"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Flauta Mágica esquina Parsifal",
+                "synonyms": [
+                  "Calle Flauta Mágica",
+                  "Flauta Mágica",
+                  "1381"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Madrid fuente",
+                "synonyms": [
+                  "Madrid fuente",
+                  "1382"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Arca Real 163",
+                "synonyms": [
+                  "Arca Real 163",
+                  "1383"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Zamora frente Las Arcas",
+                "synonyms": [
+                  "1384"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Zamora Colegio San Agustín",
+                "synonyms": [
+                  "Zamora Colegio San Agustín",
+                  "1385"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Dos de Mayo esquina Divina Pastora",
+                "synonyms": [
+                  "Calle Dos de Mayo",
+                  "Dos de Mayo",
+                  "1387"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda 204 frente Centro Deportivo",
+                "synonyms": [
+                  "Carretera Rueda 204",
+                  "Rueda 204",
+                  "1389"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Enseñanza Centro Educación Especial",
+                "synonyms": [
+                  "Enseñanza Centro Educación Especial",
+                  "1390"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Monasterio Santo Domingo de Silos 3",
+                "synonyms": [
+                  "Monasterio Santo Domingo de Silos 3",
+                  "1391"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Monasterio Santo Domingo de Silos 8",
+                "synonyms": [
+                  "Monasterio Santo Domingo de Silos 8",
+                  "1392"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real PRAE",
+                "synonyms": [
+                  "Real PRAE",
+                  "1393"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real frente PRAE",
+                "synonyms": [
+                  "1394"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real Vivero",
+                "synonyms": [
+                  "Real Vivero",
+                  "1395"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real frente Vivero",
+                "synonyms": [
+                  "1396"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Kilimanjaro fte. Plaza Everest",
+                "synonyms": [
+                  "Kilimanjaro fte Plaza Everest",
+                  "1397"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Recondo 23 esq. Acera Recoletos",
+                "synonyms": [
+                  "Recondo 23 esq Acera Recoletos",
+                  "Recondo 23",
+                  "1398"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle General Ruiz 4",
+                "synonyms": [
+                  "General Ruiz 4",
+                  "1399"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Ciudad de La Habana 17",
+                "synonyms": [
+                  "Ciudad de La Habana 17",
+                  "1400"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cuesta Redonda esq. Azuela",
+                "synonyms": [
+                  "Cuesta Redonda esq Azuela",
+                  "1401"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino de Las Yeseras Polideportivo Municipal",
+                "synonyms": [
+                  "de Las Yeseras Polideportivo Municipal",
+                  "1402"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cuesta Redonda Piscinas Municipales",
+                "synonyms": [
+                  "Cuesta Redonda Piscinas Municipales",
+                  "1403"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cometa esq. Cosmologia",
+                "synonyms": [
+                  "Cometa esq Cosmologia",
+                  "1404"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Doctor Quemada frente Iglesia Santo Domingo de Guzmán",
+                "synonyms": [
+                  "Plaza Doctor Quemada",
+                  "Doctor Quemada",
+                  "1405"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Adolfo Miaja de la Muela frente Núñez de Guzmán",
+                "synonyms": [
+                  "1406"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo del Obregon esq Brezo",
+                "synonyms": [
+                  "del Obregon esq Brezo",
+                  "1407"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "El Pinar de Antequera hacia Pte Duero",
+                "synonyms": [
+                  "1408"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Andrómeda esquina Orden de Malta",
+                "synonyms": [
+                  "1409"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Andrómeda frente Orden de Malta",
+                "synonyms": [
+                  "1410"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Madre de Dios 6",
+                "synonyms": [
+                  "Madre de Dios 6",
+                  "1411"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Víctimas del Terrorismo fte. Hospital Río Hortega",
+                "synonyms": [
+                  "Víctimas del Terrorismo fte Hospital Río Hortega",
+                  "1413"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Arribes del Duero esquina Cañón del Río Lobos",
+                "synonyms": [
+                  "1414"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Picos de Europa esquina Sierra de Gredos",
+                "synonyms": [
+                  "1415"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Picos de Europa esquina Arribes del Duero",
+                "synonyms": [
+                  "1416"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Arribes del Duero frente Cañón del Río Lobos",
+                "synonyms": [
+                  "1417"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Carabela frente Galeón",
+                "synonyms": [
+                  "Calle Carabela",
+                  "1418"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Martín Santos Romero fte. José María Castilviejo",
+                "synonyms": [
+                  "Martín Santos Romero fte José María Castilviejo",
+                  "1419"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Soria 32",
+                "synonyms": [
+                  "Soria 32",
+                  "1420"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Soria frente 32",
+                "synonyms": [
+                  "1421"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cometa esquina Astrofísica",
+                "synonyms": [
+                  "Calle Cometa",
+                  "1423"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Aguanieves frente Autillo",
+                "synonyms": [
+                  "1424"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Aguanieves esquina Autillo",
+                "synonyms": [
+                  "1425"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Melón esquina Cañada Real",
+                "synonyms": [
+                  "Calle Melón",
+                  "1426"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Alcaparra 21 esquina Pomelo",
+                "synonyms": [
+                  "Calle Alcaparra 21",
+                  "Alcaparra 21",
+                  "1427"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Maracuyá esquina Mango",
+                "synonyms": [
+                  "Calle Maracuyá",
+                  "1428"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Aguacate 20",
+                "synonyms": [
+                  "Aguacate 20",
+                  "1429"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Melón 1 esquina Cañada Real",
+                "synonyms": [
+                  "Calle Melón 1",
+                  "Melón 1",
+                  "1430"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Hernando de Acuña 1 esquina Mateo Seoane S.",
+                "synonyms": [
+                  "Calle Hernando de Acuña 1",
+                  "Hernando de Acuña 1",
+                  "550"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Hernando de Acuña 13 esquina Manuel Silvela",
+                "synonyms": [
+                  "Calle Hernando de Acuña 13",
+                  "Hernando de Acuña 13",
+                  "551"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Hernando de Acuña 18 esquina Manuel Silvela",
+                "synonyms": [
+                  "Calle Hernando de Acuña 18",
+                  "Hernando de Acuña 18",
+                  "552"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Hernando de Acuña Parcela 21 esquina Juan Valladolid",
+                "synonyms": [
+                  "Calle Hernando de Acuña Parcela 21",
+                  "Hernando de Acuña Parcela 21",
+                  "553"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Padre Benito Menni esquina Caamaño",
+                "synonyms": [
+                  "554"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Aluminio frente 5",
+                "synonyms": [
+                  "Calle Aluminio",
+                  "555"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Aluminio 7 esquina Turquesa",
+                "synonyms": [
+                  "Calle Aluminio 7",
+                  "Aluminio 7",
+                  "556"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Angustias 5 Teatro Calderón",
+                "synonyms": [
+                  "Angustias 5 Teatro Calderón",
+                  "Angustias 5",
+                  "558"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Arca Real frente Centro Madrid",
+                "synonyms": [
+                  "560"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Arca Real Centro Madrid",
+                "synonyms": [
+                  "Arca Real Centro Madrid",
+                  "561"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Argales frente 21 Inst. Arca Real",
+                "synonyms": [
+                  "Calle Argales",
+                  "564"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Argales 4",
+                "synonyms": [
+                  "Argales 4",
+                  "565"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Arrabal 12",
+                "synonyms": [
+                  "Arrabal 12",
+                  "566"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Arrabal 13",
+                "synonyms": [
+                  "Arrabal 13",
+                  "567"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Miguel Ángel Blanco 2 frente Plaza del Milenio",
+                "synonyms": [
+                  "Avenida Miguel Ángel Blanco 2",
+                  "Miguel Ángel Blanco 2",
+                  "568"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Miguel Ángel Blanco frente 23 esq. Pío Río Hortega",
+                "synonyms": [
+                  "Avenida Miguel Ángel Blanco",
+                  "Miguel Ángel Blanco",
+                  "569"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Miguel Ángel Blanco Plaza del Milenio",
+                "synonyms": [
+                  "Miguel Ángel Blanco Plaza del Milenio",
+                  "570"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Miguel Ángel Blanco 5 esquina Avenida Salamanca",
+                "synonyms": [
+                  "Avenida Miguel Ángel Blanco 5",
+                  "Miguel Ángel Blanco 5",
+                  "572"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Azalea frente 6",
+                "synonyms": [
+                  "573"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Azalea esquina Alhelí",
+                "synonyms": [
+                  "574"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Azucena 18 esquina Dalia",
+                "synonyms": [
+                  "Calle Azucena 18",
+                  "Azucena 18",
+                  "575"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Bálago esquina Avenida Ramón Pradera",
+                "synonyms": [
+                  "576"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Bálago esquina Sementera",
+                "synonyms": [
+                  "577"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Barbecho esquina Mieses",
+                "synonyms": [
+                  "580"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Barbecho frente Arado",
+                "synonyms": [
+                  "581"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Pío Baroja 14 esquina Miguel Delibes",
+                "synonyms": [
+                  "Calle Pío Baroja 14",
+                  "Pío Baroja 14",
+                  "583"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Pío Baroja 9 Iglesia San Simón de Rojas",
+                "synonyms": [
+                  "Pío Baroja 9 Iglesia San Simón de Rojas",
+                  "Pío Baroja 9",
+                  "586"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Jardín Botánico frente 6",
+                "synonyms": [
+                  "587"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Jardín Botánico frente Jara",
+                "synonyms": [
+                  "588"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Jardín Botánico 6",
+                "synonyms": [
+                  "Jardín Botánico 6",
+                  "589"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Jardín Botánico Parcela 7 frente Centro Salud Victoria",
+                "synonyms": [
+                  "Paseo Jardín Botánico Parcela 7",
+                  "Jardín Botánico Parcela 7",
+                  "590"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Jardín Botánico Parcela 8 Centro Salud La Victoria",
+                "synonyms": [
+                  "Jardín Botánico Parcela 8 Centro Salud La Victoria",
+                  "Jardín Botánico Parcela 8",
+                  "591"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Bronce 3 AUVASA",
+                "synonyms": [
+                  "Bronce 3 AUVASA",
+                  "Bronce 3",
+                  "593"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Burgos Policía Municipal",
+                "synonyms": [
+                  "Burgos Policía Municipal",
+                  "596"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Burgos 14 esquina Pisuerga",
+                "synonyms": [
+                  "Avenida Burgos 14",
+                  "Burgos 14",
+                  "597"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Burgos 27",
+                "synonyms": [
+                  "Burgos 27",
+                  "598"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Burgos 9 esquina La Victoria",
+                "synonyms": [
+                  "Avenida Burgos 9",
+                  "Burgos 9",
+                  "599"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Burgos 38 frente Policía Municipal",
+                "synonyms": [
+                  "Avenida Burgos 38",
+                  "Burgos 38",
+                  "600"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Burgos 39",
+                "synonyms": [
+                  "Burgos 39",
+                  "601"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Burgos 54",
+                "synonyms": [
+                  "Burgos 54",
+                  "603"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Burgos 72",
+                "synonyms": [
+                  "Burgos 72",
+                  "604"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real frente Colegio El Pilar",
+                "synonyms": [
+                  "607"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real frente Hípica",
+                "synonyms": [
+                  "608"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real 300 Colegio El Pilar",
+                "synonyms": [
+                  "Real 300 Colegio El Pilar",
+                  "Real 300",
+                  "610"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real Hípica",
+                "synonyms": [
+                  "Real Hípica",
+                  "611"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Real 560",
+                "synonyms": [
+                  "Real 560",
+                  "617"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Soria esquina Diego Velázquez",
+                "synonyms": [
+                  "618"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Castillejo frente 4-6",
+                "synonyms": [
+                  "Calle Castillejo",
+                  "619"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Isabel La Católica Plaza Poniente",
+                "synonyms": [
+                  "Isabel La Católica Plaza Poniente",
+                  "621"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Isabel La Católica Instituto Núñez de Arce",
+                "synonyms": [
+                  "Isabel La Católica Instituto Núñez de Arce",
+                  "622"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Isabel La Católica 27 esquina Conde Benavente",
+                "synonyms": [
+                  "Paseo Isabel La Católica 27",
+                  "Isabel La Católica 27",
+                  "623"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo del Cauce frente Ing. Industriales",
+                "synonyms": [
+                  "624"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo del Cauce frente Centro Salud Pilarica",
+                "synonyms": [
+                  "625"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo del Cauce Ing. Industriales",
+                "synonyms": [
+                  "del Cauce Ing Industriales",
+                  "627"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo del Cauce Centro Salud Pilarica",
+                "synonyms": [
+                  "del Cauce Centro Salud Pilarica",
+                  "628"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cerrada 1 esquina Santa Clara",
+                "synonyms": [
+                  "Calle Cerrada 1",
+                  "Cerrada 1",
+                  "629"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Los Cerros Pza. Cine Castilla",
+                "synonyms": [
+                  "Los Cerros Pza Cine Castilla",
+                  "632"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Los Cerros fte. Pza. Cine Castilla",
+                "synonyms": [
+                  "Los Cerros fte Pza Cine Castilla",
+                  "633"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cigüeña 21",
+                "synonyms": [
+                  "Cigüeña 21",
+                  "634"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cigüeña 14",
+                "synonyms": [
+                  "Cigüeña 14",
+                  "635"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cigüeña 1 esquina San Isidro",
+                "synonyms": [
+                  "Calle Cigüeña 1",
+                  "Cigüeña 1",
+                  "636"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cigüeña 40 esquina Villabáñez",
+                "synonyms": [
+                  "Calle Cigüeña 40",
+                  "Cigüeña 40",
+                  "639"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cigüeña 41 esquina Villabáñez",
+                "synonyms": [
+                  "Calle Cigüeña 41",
+                  "Cigüeña 41",
+                  "640"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cigüeña 4 Iglesia San Isidro",
+                "synonyms": [
+                  "Cigüeña 4 Iglesia San Isidro",
+                  "Cigüeña 4",
+                  "641"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cardenal Cisneros esquina San Juan de Ávila",
+                "synonyms": [
+                  "Calle Cardenal Cisneros",
+                  "Cardenal Cisneros",
+                  "642"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cobalto 69 esquina Topacio",
+                "synonyms": [
+                  "Calle Cobalto 69",
+                  "Cobalto 69",
+                  "643"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cobalto 28 esquina Pirita",
+                "synonyms": [
+                  "Calle Cobalto 28",
+                  "Cobalto 28",
+                  "644"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cobalto 49 esquina Galena",
+                "synonyms": [
+                  "Calle Cobalto 49",
+                  "Cobalto 49",
+                  "645"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cobalto frente 69 esquina Topacio",
+                "synonyms": [
+                  "Calle Cobalto",
+                  "646"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cobalto 21 esquina Pirita",
+                "synonyms": [
+                  "Calle Cobalto 21",
+                  "Cobalto 21",
+                  "647"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cobalto 42 esquina Galena",
+                "synonyms": [
+                  "Calle Cobalto 42",
+                  "Cobalto 42",
+                  "648"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Recondo 4 frente Estación de Äutobuses",
+                "synonyms": [
+                  "Calle Recondo 4",
+                  "Recondo 4",
+                  "649"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Puente Colgante 2 Estación de Autobuses",
+                "synonyms": [
+                  "Puente Colgante 2 Estación de Autobuses",
+                  "Puente Colgante 2",
+                  "651"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Puente Colgante 18 esquina Gabilondo",
+                "synonyms": [
+                  "Calle Puente Colgante 18",
+                  "Puente Colgante 18",
+                  "653"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Las Contiendas frente 109",
+                "synonyms": [
+                  "Avenida Las Contiendas",
+                  "Las Contiendas",
+                  "657"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Chancillería 4 Biblioteca Reina Sofía",
+                "synonyms": [
+                  "Chancillería 4 Biblioteca Reina Sofía",
+                  "Chancillería 4",
+                  "658"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Chile Instituto Antonio Tovar",
+                "synonyms": [
+                  "Chile Instituto Antonio Tovar",
+                  "661"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Miguel Delibes 19B esquina Unamuno",
+                "synonyms": [
+                  "Calle Miguel Delibes 19B",
+                  "Miguel Delibes 19B",
+                  "663"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Miguel Delibes 40 esquina Unamuno",
+                "synonyms": [
+                  "Calle Miguel Delibes 40",
+                  "Miguel Delibes 40",
+                  "664"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Don Sancho 7",
+                "synonyms": [
+                  "Don Sancho 7",
+                  "665"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Duque de La Victoria 23 esquina Plaza España",
+                "synonyms": [
+                  "Calle Duque de La Victoria 23",
+                  "Duque de La Victoria 23",
+                  "666"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Venezuela esquina Ecuador",
+                "synonyms": [
+                  "Calle Venezuela",
+                  "667"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Embajadores 60 frente Escuela Oficial de Idiomas",
+                "synonyms": [
+                  "Calle Embajadores 60",
+                  "Embajadores 60",
+                  "668"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Embajadores frente 72 esquina Hornija",
+                "synonyms": [
+                  "669"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Embajadores frente 58 escuela Oficial de Idiomas",
+                "synonyms": [
+                  "670"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Embajadores 4 esquina Paseo Farnesio",
+                "synonyms": [
+                  "Calle Embajadores 4",
+                  "Embajadores 4",
+                  "671"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Embajadores 57 esquina Transición",
+                "synonyms": [
+                  "Calle Embajadores 57",
+                  "Embajadores 57",
+                  "672"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Embajadores 74 esquina Hornija",
+                "synonyms": [
+                  "Calle Embajadores 74",
+                  "Embajadores 74",
+                  "673"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Embajadores 92 esquina Transición",
+                "synonyms": [
+                  "Calle Embajadores 92",
+                  "Embajadores 92",
+                  "674"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Enseñanza esquina Avenida Gijón",
+                "synonyms": [
+                  "Calle Enseñanza",
+                  "675"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Valle Esgueva 87 esquina Paseo Belén",
+                "synonyms": [
+                  "Avenida Valle Esgueva 87",
+                  "Valle Esgueva 87",
+                  "677"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Valle Esgueva 6 Económicas",
+                "synonyms": [
+                  "Valle Esgueva 6 Económicas",
+                  "Valle Esgueva 6",
+                  "678"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Valle Esgueva 41 frente Económicas",
+                "synonyms": [
+                  "Avenida Valle Esgueva 41",
+                  "Valle Esgueva 41",
+                  "679"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Farnesio frente 19 frente Arca Real",
+                "synonyms": [
+                  "Paseo Farnesio",
+                  "680"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Fray Luis de León 14 esquina López Gómez",
+                "synonyms": [
+                  "Calle Fray Luis de León 14",
+                  "Fray Luis de León 14",
+                  "682"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Fuente El Sol 2 esquina Plaza San Bartolomé",
+                "synonyms": [
+                  "Calle Fuente El Sol 2",
+                  "Fuente El Sol 2",
+                  "683"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Fuente El Sol 31",
+                "synonyms": [
+                  "Fuente El Sol 31",
+                  "684"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Gamazo 17 esquina Bailén",
+                "synonyms": [
+                  "Calle Gamazo 17",
+                  "Gamazo 17",
+                  "686"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Gijón frente Cristo Rey",
+                "synonyms": [
+                  "Avenida Gijón",
+                  "687"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Gijón 82 frente Chopos",
+                "synonyms": [
+                  "Avenida Gijón 82",
+                  "Gijón 82",
+                  "688"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Gijón 71 Cementerio Las Contiendas",
+                "synonyms": [
+                  "Gijón 71 Cementerio Las Contiendas",
+                  "Gijón 71",
+                  "691"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Gijón 29 esquina Chopos",
+                "synonyms": [
+                  "Avenida Gijón 29",
+                  "Gijón 29",
+                  "692"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Gijón Cristo Rey",
+                "synonyms": [
+                  "Gijón Cristo Rey",
+                  "694"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Gijón 26 Canal",
+                "synonyms": [
+                  "Gijón 26 Canal",
+                  "Gijón 26",
+                  "695"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Gijón 3 frente Canal",
+                "synonyms": [
+                  "Avenida Gijón 3",
+                  "Gijón 3",
+                  "696"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Gijón 6 Plaza San Bartolomé",
+                "synonyms": [
+                  "Gijón 6 Plaza San Bartolomé",
+                  "Gijón 6",
+                  "697"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Gondomar 12 esquina Santa Clara",
+                "synonyms": [
+                  "Calle Gondomar 12",
+                  "Gondomar 12",
+                  "698"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Ciudad de La Habana 1 esquina Amadeo Arias",
+                "synonyms": [
+                  "Calle Ciudad de La Habana 1",
+                  "Ciudad de La Habana 1",
+                  "699"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Ciudad de La Habana frente 3 esquina Juan G. Hortelano",
+                "synonyms": [
+                  "Calle Ciudad de La Habana",
+                  "Ciudad de La Habana",
+                  "700"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Puente la Reina 30",
+                "synonyms": [
+                  "Puente la Reina 30",
+                  "703"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Labradores 1 esquina Plaza Cruz Verde",
+                "synonyms": [
+                  "Calle Labradores 1",
+                  "Labradores 1",
+                  "706"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Panaderos 42 esq. Pza. Caño Argales",
+                "synonyms": [
+                  "Panaderos 42 esq Pza Caño Argales",
+                  "Panaderos 42",
+                  "707"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Labradores 41",
+                "synonyms": [
+                  "Labradores 41",
+                  "708"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Arco Ladrillo 31 esquina Paseo Farnesio",
+                "synonyms": [
+                  "Paseo Arco Ladrillo 31",
+                  "Arco Ladrillo 31",
+                  "711"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Julián Merino Lápice Piscinas Municipales",
+                "synonyms": [
+                  "Julián Merino Lápice Piscinas Municipales",
+                  "715"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Magaña esquina Solanilla",
+                "synonyms": [
+                  "Calle Magaña",
+                  "716"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle López Gómez 13 esquina Fray Luis de León",
+                "synonyms": [
+                  "Calle López Gómez 13",
+                  "López Gómez 13",
+                  "717"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Antonio Machado esquina Pío Baroja",
+                "synonyms": [
+                  "719"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Antonio Machado esquina José María Pemán",
+                "synonyms": [
+                  "720"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Madre de Dios 15",
+                "synonyms": [
+                  "Madre de Dios 15",
+                  "722"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Madre de Dios 20 Facultad de Comercio",
+                "synonyms": [
+                  "Madre de Dios 20 Facultad de Comercio",
+                  "Madre de Dios 20",
+                  "723"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Madre de Dios 29 frente Facultad de Comercio",
+                "synonyms": [
+                  "Calle Madre de Dios 29",
+                  "Madre de Dios 29",
+                  "724"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Madrid Centro San Juan de Dios",
+                "synonyms": [
+                  "Madrid Centro San Juan de Dios",
+                  "726"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Medina del Campo 15 frente Centro Salud ArturoEyríes",
+                "synonyms": [
+                  "Avenida Medina del Campo 15",
+                  "Medina del Campo 15",
+                  "729"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Medina del Campo frente Barlovento",
+                "synonyms": [
+                  "730"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Medina del Campo esquina Barlovento",
+                "synonyms": [
+                  "731"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Medina del Campo frente 19 Centro Salud ArturoEyríes",
+                "synonyms": [
+                  "732"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Vázquez de Menchaca 21 esquina Avenida Zamora",
+                "synonyms": [
+                  "Calle Vázquez de Menchaca 21",
+                  "Vázquez de Menchaca 21",
+                  "733"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Vázquez de Menchaca 33",
+                "synonyms": [
+                  "Vázquez de Menchaca 33",
+                  "734"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Vázquez de Menchaca 40 esquina Avenida Zamora",
+                "synonyms": [
+                  "Calle Vázquez de Menchaca 40",
+                  "Vázquez de Menchaca 40",
+                  "735"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Vázquez de Menchaca 19",
+                "synonyms": [
+                  "Vázquez de Menchaca 19",
+                  "736"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Vázquez de Menchaca 5",
+                "synonyms": [
+                  "Vázquez de Menchaca 5",
+                  "737"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Vázquez de Menchaca 9",
+                "synonyms": [
+                  "Vázquez de Menchaca 9",
+                  "738"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Adolfo Miaja de la Muela esquina Remigio Cabello Toral",
+                "synonyms": [
+                  "742"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Adolfo Miaja de la Muela 6 esquina Hernando de Acuña",
+                "synonyms": [
+                  "Calle Adolfo Miaja de la Muela 6",
+                  "Adolfo Miaja de la Muela 6",
+                  "743"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Mieses frente 40",
+                "synonyms": [
+                  "744"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Mieses frente 8",
+                "synonyms": [
+                  "747"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Mieses 40",
+                "synonyms": [
+                  "Mieses 40",
+                  "749"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Moradas 21 esquina Cardenal Cisneros",
+                "synonyms": [
+                  "Calle Moradas 21",
+                  "Moradas 21",
+                  "751"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Moradas 31 esquina Nebrija",
+                "synonyms": [
+                  "Calle Moradas 31",
+                  "Moradas 31",
+                  "752"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle La Morena edificio Antares",
+                "synonyms": [
+                  "La Morena edificio Antares",
+                  "754"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle La Morena 3 Bloque 2",
+                "synonyms": [
+                  "La Morena 3 Bloque 2",
+                  "La Morena 3",
+                  "755"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Gloria Fuertes 1 esquina Joaquín Velasco Martín",
+                "synonyms": [
+                  "Avenida Gloria Fuertes 1",
+                  "Gloria Fuertes 1",
+                  "757"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Gloria Fuertes 4 esquina Avenida Salamanca",
+                "synonyms": [
+                  "Avenida Gloria Fuertes 4",
+                  "Gloria Fuertes 4",
+                  "759"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Mundial 82 Estadio José Zorrilla",
+                "synonyms": [
+                  "Mundial 82 Estadio José Zorrilla",
+                  "761"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Daniel del Olmo 18 frente ITV",
+                "synonyms": [
+                  "Calle Daniel del Olmo 18",
+                  "Daniel del Olmo 18",
+                  "766"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Daniel del Olmo frente 20 ITV",
+                "synonyms": [
+                  "Calle Daniel del Olmo",
+                  "Daniel del Olmo",
+                  "769"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Títulos esquina Guindal",
+                "synonyms": [
+                  "771"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Títulos frente Guindal",
+                "synonyms": [
+                  "772"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Títulos frente Los Traductores",
+                "synonyms": [
+                  "773"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Títulos puente de hierro",
+                "synonyms": [
+                  "Títulos puente de hierro",
+                  "774"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Títulos esquina Los Traductores",
+                "synonyms": [
+                  "775"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Títulos frente puente de hierro",
+                "synonyms": [
+                  "776"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Palencia 2",
+                "synonyms": [
+                  "Palencia 2",
+                  "778"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Palencia 41 Policía Municipal",
+                "synonyms": [
+                  "Palencia 41 Policía Municipal",
+                  "Palencia 41",
+                  "779"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Palencia frente 41 esquina Amor de Dios",
+                "synonyms": [
+                  "Avenida Palencia",
+                  "780"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Panaderos 2 esquina Plaza España",
+                "synonyms": [
+                  "Calle Panaderos 2",
+                  "Panaderos 2",
+                  "781"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Alonso Pesquera 5 esquina Fidel Recio",
+                "synonyms": [
+                  "Calle Alonso Pesquera 5",
+                  "Alonso Pesquera 5",
+                  "782"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "El Pinar de Antequera hacia Centro",
+                "synonyms": [
+                  "784"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Pirita frente 10 esquina Aluminio",
+                "synonyms": [
+                  "785"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Pirita 10",
+                "synonyms": [
+                  "Pirita 10",
+                  "786"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Páramo San Isidro frente 1",
+                "synonyms": [
+                  "787"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Páramo San Isidro frente 17",
+                "synonyms": [
+                  "788"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Páramo San Isidro frente 38",
+                "synonyms": [
+                  "789"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Páramo San Isidro esquina Avenida Soria",
+                "synonyms": [
+                  "790"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Páramo San Isidro 1",
+                "synonyms": [
+                  "791"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Páramo San Isidro 15",
+                "synonyms": [
+                  "792"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Páramo San Isidro 38",
+                "synonyms": [
+                  "793"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Ramón Pradera frente Feria de Valladolid",
+                "synonyms": [
+                  "794"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Ramón Pradera frente 10",
+                "synonyms": [
+                  "795"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Ramón Pradera Feria de Valladolid",
+                "synonyms": [
+                  "Ramón Pradera Feria de Valladolid",
+                  "796"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Ramón Pradera 15-17",
+                "synonyms": [
+                  "Ramón Pradera 15-17",
+                  "797"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Prado de La Magdalena 18 Filosofía y Letras",
+                "synonyms": [
+                  "Prado de La Magdalena 18 Filosofía y Letras",
+                  "Prado de La Magdalena 18",
+                  "798"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Prado de La Magdalena 6 frente Residencia Alfonso VIII",
+                "synonyms": [
+                  "Paseo Prado de La Magdalena 6",
+                  "Prado de La Magdalena 6",
+                  "799"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "C/ San Isidro 30 esquina Cádiz",
+                "synonyms": [
+                  "C/ San Isidro 30",
+                  "San Isidro 30",
+                  "800"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "C/ San Isidro 43 entrada Túnel",
+                "synonyms": [
+                  "C/ San Isidro 43",
+                  "San Isidro 43",
+                  "801"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Puente La Reina 67",
+                "synonyms": [
+                  "Puente La Reina 67",
+                  "802"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Juan de Austria frente Centro Comercial",
+                "synonyms": [
+                  "Plaza Juan de Austria",
+                  "803"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Juan de Austria Centro Comercial",
+                "synonyms": [
+                  "Juan de Austria Centro Comercial",
+                  "804"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Gijón 1 esquina Plaza San Bartolomé",
+                "synonyms": [
+                  "Avenida Gijón 1",
+                  "Gijón 1",
+                  "805"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Caño Argales",
+                "synonyms": [
+                  "Caño Argales",
+                  "807"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Circular 11 esquina San Isidro",
+                "synonyms": [
+                  "Plaza Circular 11",
+                  "Circular 11",
+                  "808"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Circular 7 esquina Industrias",
+                "synonyms": [
+                  "Plaza Circular 7",
+                  "Circular 7",
+                  "809"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Cruz Verde 5",
+                "synonyms": [
+                  "Cruz Verde 5",
+                  "811"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Fuente Dorada",
+                "synonyms": [
+                  "Fuente Dorada",
+                  "812"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza España Bola del Mundo",
+                "synonyms": [
+                  "España Bola del Mundo",
+                  "813"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza España 12 Iglesia Capuchinos",
+                "synonyms": [
+                  "España 12 Iglesia Capuchinos",
+                  "España 12",
+                  "814"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza España 13",
+                "synonyms": [
+                  "España 13",
+                  "815"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Carmen Ferreiro",
+                "synonyms": [
+                  "Carmen Ferreiro",
+                  "816"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Doctor Jiménez Díaz esquina Penitencia",
+                "synonyms": [
+                  "Plaza Doctor Jiménez Díaz",
+                  "Doctor Jiménez Díaz",
+                  "817"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Madrid 2",
+                "synonyms": [
+                  "Madrid 2",
+                  "818"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Mayor frente 29 (La Cistérniga)",
+                "synonyms": [
+                  "Plaza Mayor",
+                  "819"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Mayor 29 (La Cistérniga)",
+                "synonyms": [
+                  "Mayor 29 La Cistérniga",
+                  "Mayor 29",
+                  "820"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Doctor Quemada Iglesia Santo Domingo Guzmán",
+                "synonyms": [
+                  "Doctor Quemada Iglesia Santo Domingo Guzmán",
+                  "823"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza San Juan",
+                "synonyms": [
+                  "San Juan",
+                  "824"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza San Nicolás 13",
+                "synonyms": [
+                  "San Nicolás 13",
+                  "825"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Colegio Santa Cruz 9",
+                "synonyms": [
+                  "Colegio Santa Cruz 9",
+                  "826"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Alfonso X",
+                "synonyms": [
+                  "Alfonso X",
+                  "827"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Universidad esquina López Gómez",
+                "synonyms": [
+                  "Plaza Universidad",
+                  "828"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Uruguay esquina Honduras",
+                "synonyms": [
+                  "Plaza Uruguay",
+                  "829"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Vadillos 7 esquina Palacio Valdés",
+                "synonyms": [
+                  "Plaza Vadillos 7",
+                  "Vadillos 7",
+                  "830"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Zorrilla 3 esquina Santiago",
+                "synonyms": [
+                  "Plaza Zorrilla 3",
+                  "Zorrilla 3",
+                  "832"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Ramón y Cajal 3 Hospital Clínico",
+                "synonyms": [
+                  "Ramón y Cajal 3 Hospital Clínico",
+                  "Ramón y Cajal 3",
+                  "833"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Rastrojo 7 frente Colegio Giner de los Ríos",
+                "synonyms": [
+                  "Calle Rastrojo 7",
+                  "Rastrojo 7",
+                  "834"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Rastrojo 6 Colegio Giner de los Ríos",
+                "synonyms": [
+                  "Rastrojo 6 Colegio Giner de los Ríos",
+                  "Rastrojo 6",
+                  "835"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Real 7",
+                "synonyms": [
+                  "Real 7",
+                  "836"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Real 106 Plaza Damián Tascón Prieto",
+                "synonyms": [
+                  "Real 106 Plaza Damián Tascón Prieto",
+                  "Real 106",
+                  "837"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Real 24",
+                "synonyms": [
+                  "Real 24",
+                  "838"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Real 85 frente Plaza Damián Tascón Prieto",
+                "synonyms": [
+                  "Calle Real 85",
+                  "Real 85",
+                  "839"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Real de Burgos frente Iglesia San Pedro Apóstol",
+                "synonyms": [
+                  "Calle Real de Burgos",
+                  "Real de Burgos",
+                  "840"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Fidel Recio 1 esquina Alonso Pesquera",
+                "synonyms": [
+                  "Calle Fidel Recio 1",
+                  "Fidel Recio 1",
+                  "842"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Estación del Norte esquina Recondo",
+                "synonyms": [
+                  "Calle Estación del Norte",
+                  "Estación del Norte",
+                  "844"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Renedo 29",
+                "synonyms": [
+                  "Renedo 29",
+                  "846"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Pío del Río Hortega 9",
+                "synonyms": [
+                  "Pío del Río Hortega 9",
+                  "847"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda frente Parque Artillería",
+                "synonyms": [
+                  "848"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda frente Cuartel Teniente Galiana",
+                "synonyms": [
+                  "849"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda frente 232 frente Colegio Ave María",
+                "synonyms": [
+                  "850"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda esquina Madroño",
+                "synonyms": [
+                  "851"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda frente Vinos de Cigales",
+                "synonyms": [
+                  "852"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda 187 Hotel",
+                "synonyms": [
+                  "Rueda 187 Hotel",
+                  "Rueda 187",
+                  "853"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda frente 41",
+                "synonyms": [
+                  "854"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda 131 Centro Deportivo",
+                "synonyms": [
+                  "Rueda 131 Centro Deportivo",
+                  "Rueda 131",
+                  "855"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda Parque Artillería",
+                "synonyms": [
+                  "Rueda Parque Artillería",
+                  "856"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda Cuartel Teniente Galiana",
+                "synonyms": [
+                  "Rueda Cuartel Teniente Galiana",
+                  "857"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Castilla y León 1",
+                "synonyms": [
+                  "Castilla y León 1",
+                  "858"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda 232 Colegio Ave María",
+                "synonyms": [
+                  "Rueda 232 Colegio Ave María",
+                  "Rueda 232",
+                  "859"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda frente Madroño",
+                "synonyms": [
+                  "860"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda esquina Vinos de Cigales",
+                "synonyms": [
+                  "861"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda frente 187 frente Hotel",
+                "synonyms": [
+                  "862"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda Piscinas FASA",
+                "synonyms": [
+                  "Rueda Piscinas FASA",
+                  "863"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda 19 esquina Mota",
+                "synonyms": [
+                  "Carretera Rueda 19",
+                  "Rueda 19",
+                  "864"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda 36 esquina Mota",
+                "synonyms": [
+                  "Carretera Rueda 36",
+                  "Rueda 36",
+                  "865"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda 37 esquina Corta",
+                "synonyms": [
+                  "Carretera Rueda 37",
+                  "Rueda 37",
+                  "866"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda 47 frente Imserso",
+                "synonyms": [
+                  "Carretera Rueda 47",
+                  "Rueda 47",
+                  "867"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Rueda esquina Vega Sicilia",
+                "synonyms": [
+                  "868"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Plaza Vadillos frente 5",
+                "synonyms": [
+                  "Plaza Vadillos",
+                  "869"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Francisco Mendizábal 5",
+                "synonyms": [
+                  "Francisco Mendizábal 5",
+                  "870"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Nicolás Salmerón 19 esquina Labradores",
+                "synonyms": [
+                  "Calle Nicolás Salmerón 19",
+                  "Nicolás Salmerón 19",
+                  "871"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle San Cristóbal 15 esquina Avenida Soria",
+                "synonyms": [
+                  "Calle San Cristóbal 15",
+                  "San Cristóbal 15",
+                  "872"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Santa Lucía 62 esquina Plaza Luis Braille",
+                "synonyms": [
+                  "Calle Santa Lucía 62",
+                  "Santa Lucía 62",
+                  "875"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Santander Poblado Endasa",
+                "synonyms": [
+                  "Santander Poblado Endasa",
+                  "876"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Santander frente Poblado Endasa",
+                "synonyms": [
+                  "Avenida Santander",
+                  "877"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Santander Centro Comercial",
+                "synonyms": [
+                  "Santander Centro Comercial",
+                  "878"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Santander 49 Barrio España",
+                "synonyms": [
+                  "Santander 49 Barrio España",
+                  "Santander 49",
+                  "879"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Santander 8 frente Barrio España",
+                "synonyms": [
+                  "Avenida Santander 8",
+                  "Santander 8",
+                  "880"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Santuario 5 esquina López Gómez",
+                "synonyms": [
+                  "Calle Santuario 5",
+                  "Santuario 5",
+                  "881"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Transición 3",
+                "synonyms": [
+                  "Transición 3",
+                  "882"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Segovia frente Iglesia del Carmen",
+                "synonyms": [
+                  "883"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Segovia frente Colegio Hijas de Jesús",
+                "synonyms": [
+                  "884"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Segovia frente 57",
+                "synonyms": [
+                  "885"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Segovia Iglesia del Carmen",
+                "synonyms": [
+                  "Segovia Iglesia del Carmen",
+                  "886"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Segovia esquina Trabajo",
+                "synonyms": [
+                  "887"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Segovia Colegio Hijas de Jesús",
+                "synonyms": [
+                  "Segovia Colegio Hijas de Jesús",
+                  "888"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Segovia 161 frente Hornija",
+                "synonyms": [
+                  "Avenida Segovia 161",
+                  "Segovia 161",
+                  "889"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Segovia 57 esquina Paseo San Vicente",
+                "synonyms": [
+                  "Avenida Segovia 57",
+                  "Segovia 57",
+                  "890"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Segovia 88 esquina Hornija",
+                "synonyms": [
+                  "Avenida Segovia 88",
+                  "Segovia 88",
+                  "891"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Segovia 99 esquina Olmedo",
+                "synonyms": [
+                  "Avenida Segovia 99",
+                  "Segovia 99",
+                  "892"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas Urb. Las Aceñas",
+                "synonyms": [
+                  "Viejo Simancas Urb Las Aceñas",
+                  "895"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas fte. El Barrio",
+                "synonyms": [
+                  "Viejo Simancas fte El Barrio",
+                  "896"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas Las Lagunillas",
+                "synonyms": [
+                  "Viejo Simancas Las Lagunillas",
+                  "897"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas esquina Encinas",
+                "synonyms": [
+                  "898"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas Pago La Bomba",
+                "synonyms": [
+                  "Viejo Simancas Pago La Bomba",
+                  "900"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas El Pichón",
+                "synonyms": [
+                  "Viejo Simancas El Pichón",
+                  "901"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas El Pino",
+                "synonyms": [
+                  "Viejo Simancas El Pino",
+                  "902"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas 44 frente Centro Comercial",
+                "synonyms": [
+                  "Camino Viejo Simancas 44",
+                  "Viejo Simancas 44",
+                  "903"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas Barrio Las Villas",
+                "synonyms": [
+                  "Viejo Simancas Barrio Las Villas",
+                  "904"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente Urb. Las Aceñas",
+                "synonyms": [
+                  "905"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas El Barrio",
+                "synonyms": [
+                  "Viejo Simancas El Barrio",
+                  "906"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente Las Lagunillas",
+                "synonyms": [
+                  "907"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente Encinas",
+                "synonyms": [
+                  "908"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente Pago La Bomba",
+                "synonyms": [
+                  "910"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente El Pichón",
+                "synonyms": [
+                  "911"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente El Pino",
+                "synonyms": [
+                  "912"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas Centro Comercial",
+                "synonyms": [
+                  "Viejo Simancas Centro Comercial",
+                  "913"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente Las Villas",
+                "synonyms": [
+                  "914"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente INEA",
+                "synonyms": [
+                  "915"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas 21 Centro Educativo",
+                "synonyms": [
+                  "Viejo Simancas 21 Centro Educativo",
+                  "Viejo Simancas 21",
+                  "916"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente Vega de Valdetronco",
+                "synonyms": [
+                  "917"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas frente ES Imagen y Sonido",
+                "synonyms": [
+                  "918"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas INEA",
+                "synonyms": [
+                  "Viejo Simancas INEA",
+                  "919"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas Barrio La Rubia",
+                "synonyms": [
+                  "Viejo Simancas Barrio La Rubia",
+                  "920"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas 34 Barrio San Adrián",
+                "synonyms": [
+                  "Viejo Simancas 34 Barrio San Adrián",
+                  "Viejo Simancas 34",
+                  "921"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas esquina Vega de Valdetronco",
+                "synonyms": [
+                  "922"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas ES Imagen y Sonido",
+                "synonyms": [
+                  "Viejo Simancas ES Imagen y Sonido",
+                  "923"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Camino Viejo Simancas puente",
+                "synonyms": [
+                  "Viejo Simancas puente",
+                  "924"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Zamora frente Colegio San Agustín",
+                "synonyms": [
+                  "926"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida El Norte de Castilla 47",
+                "synonyms": [
+                  "El Norte de Castilla 47",
+                  "927"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida El Norte de Castilla 23",
+                "synonyms": [
+                  "El Norte de Castilla 23",
+                  "928"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida El Norte de Castilla 14",
+                "synonyms": [
+                  "El Norte de Castilla 14",
+                  "930"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida El Norte de Castilla 48",
+                "synonyms": [
+                  "El Norte de Castilla 48",
+                  "931"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida El Norte de Castilla 22D esq. Forja",
+                "synonyms": [
+                  "El Norte de Castilla 22D esq Forja",
+                  "932"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Soria frente Polígono San Cristóbal",
+                "synonyms": [
+                  "933"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Soria esquina Paseo Juan Carlos I",
+                "synonyms": [
+                  "934"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Soria esquina Paramo San Isidro",
+                "synonyms": [
+                  "935"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Soria raqueta Cuartel",
+                "synonyms": [
+                  "Soria raqueta Cuartel",
+                  "936"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Soria Polígono San Cristóbal",
+                "synonyms": [
+                  "Soria Polígono San Cristóbal",
+                  "937"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Avenida Soria Iveco",
+                "synonyms": [
+                  "Soria Iveco",
+                  "938"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Carretera Soria esquina Carraca",
+                "synonyms": [
+                  "939"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Sotavento esquina Avenida Medina del Campo",
+                "synonyms": [
+                  "940"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Soto 4 esquina Avenida Palencia",
+                "synonyms": [
+                  "Calle Soto 4",
+                  "Soto 4",
+                  "941"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Templarios 3 esquina Puente La Reina",
+                "synonyms": [
+                  "Calle Templarios 3",
+                  "Templarios 3",
+                  "945"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Templarios 6 esquina Puente La Reina",
+                "synonyms": [
+                  "Calle Templarios 6",
+                  "Templarios 6",
+                  "946"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Rondilla Sta.Teresa frente antiguo Hospital RíoHortega",
+                "synonyms": [
+                  "Calle Rondilla Sta Teresa",
+                  "Rondilla Sta Teresa",
+                  "947"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle José Garrote Tebar 20 esquina Manuel Silvela",
+                "synonyms": [
+                  "Calle José Garrote Tebar 20",
+                  "José Garrote Tebar 20",
+                  "949"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle José Garrote Tebar 21",
+                "synonyms": [
+                  "José Garrote Tebar 21",
+                  "950"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle José Garrote Tebar 4 esquina Amadeo Arias",
+                "synonyms": [
+                  "Calle José Garrote Tebar 4",
+                  "José Garrote Tebar 4",
+                  "951"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Topacio esquina Aluminio",
+                "synonyms": [
+                  "952"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Topacio 5",
+                "synonyms": [
+                  "Topacio 5",
+                  "953"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Topacio 23",
+                "synonyms": [
+                  "Topacio 23",
+                  "954"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cardenal Torquemada frente antiguo Hospital RíoHortega",
+                "synonyms": [
+                  "955"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cardenal Torquemada esquina Rondilla Santa Teresa",
+                "synonyms": [
+                  "956"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cardenal Torquemada frente 16",
+                "synonyms": [
+                  "957"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cardenal Torquemada 54 Centro Salud Rondilla",
+                "synonyms": [
+                  "Cardenal Torquemada 54 Centro Salud Rondilla",
+                  "Cardenal Torquemada 54",
+                  "959"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cardenal Torquemada esquina Tirso de Molina",
+                "synonyms": [
+                  "960"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Cardenal Torquemada 50 esquina Soto",
+                "synonyms": [
+                  "Calle Cardenal Torquemada 50",
+                  "Cardenal Torquemada 50",
+                  "961"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Cañada Valdestillas 21",
+                "synonyms": [
+                  "Valdestillas 21",
+                  "962"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Joaquín Velasco Martín 54 frente pol. Huerta Rey",
+                "synonyms": [
+                  "Calle Joaquín Velasco Martín 54",
+                  "Joaquín Velasco Martín 54",
+                  "964"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Joaquín Velasco Martín 9 Polideportivo Huerta del Rey",
+                "synonyms": [
+                  "Joaquín Velasco Martín 9 Polideportivo Huerta del Rey",
+                  "Joaquín Velasco Martín 9",
+                  "965"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Joaquín Velasco Martín 17 Colegio María de Molina",
+                "synonyms": [
+                  "Joaquín Velasco Martín 17 Colegio María de Molina",
+                  "Joaquín Velasco Martín 17",
+                  "966"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Joaquín Velasco Martín 1 esquina Avda. Gloria Fuertes",
+                "synonyms": [
+                  "Calle Joaquín Velasco Martín 1",
+                  "Joaquín Velasco Martín 1",
+                  "967"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Joaquín Velasco Martín 20 esquina Francesco Scrimieri",
+                "synonyms": [
+                  "Calle Joaquín Velasco Martín 20",
+                  "Joaquín Velasco Martín 20",
+                  "968"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Joaquín Velasco Martín 3 Colegio La Inmaculada",
+                "synonyms": [
+                  "Joaquín Velasco Martín 3 Colegio La Inmaculada",
+                  "Joaquín Velasco Martín 3",
+                  "969"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo San Vicente 16 esquina Álava",
+                "synonyms": [
+                  "Paseo San Vicente 16",
+                  "San Vicente 16",
+                  "971"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo San Vicente 35 esquina Sevilla",
+                "synonyms": [
+                  "Paseo San Vicente 35",
+                  "San Vicente 35",
+                  "972"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle La Victoria frente 31 esquina San Sebastián",
+                "synonyms": [
+                  "Calle La Victoria",
+                  "La Victoria",
+                  "973"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Villabáñez 131 esquina Camino Viejo del Polvorín",
+                "synonyms": [
+                  "Calle Villabáñez 131",
+                  "Villabáñez 131",
+                  "976"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Villabáñez 19 Iglesia San Ignacio de Loyola",
+                "synonyms": [
+                  "Villabáñez 19 Iglesia San Ignacio de Loyola",
+                  "Villabáñez 19",
+                  "978"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Villabáñez 55 esquina Golondrina",
+                "synonyms": [
+                  "Calle Villabáñez 55",
+                  "Villabáñez 55",
+                  "982"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Doctor Villacián frente 5 frente Mariano de los Cobos",
+                "synonyms": [
+                  "Calle Doctor Villacián",
+                  "Doctor Villacián",
+                  "984"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Doctor Villacián Monasterio de Prado",
+                "synonyms": [
+                  "Doctor Villacián Monasterio de Prado",
+                  "985"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Doctor Villacián 3 frente Monasterio de Prado",
+                "synonyms": [
+                  "Calle Doctor Villacián 3",
+                  "Doctor Villacián 3",
+                  "986"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Calle Doctor Villacián 5 esquina Mariano de los Cobos",
+                "synonyms": [
+                  "Calle Doctor Villacián 5",
+                  "Doctor Villacián 5",
+                  "987"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 166 frente LAVA",
+                "synonyms": [
+                  "Paseo Zorrilla 166",
+                  "Zorrilla 166",
+                  "990"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 88 frente Plaza de Toros",
+                "synonyms": [
+                  "Paseo Zorrilla 88",
+                  "Zorrilla 88",
+                  "991"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 65 frente Centro Comercial",
+                "synonyms": [
+                  "Paseo Zorrilla 65",
+                  "Zorrilla 65",
+                  "992"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 153 frente Centro Comercial",
+                "synonyms": [
+                  "Paseo Zorrilla 153",
+                  "Zorrilla 153",
+                  "993"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 101 LAVA",
+                "synonyms": [
+                  "Zorrilla 101 LAVA",
+                  "Zorrilla 101",
+                  "995"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 1 antiguo Hospital Militar",
+                "synonyms": [
+                  "Zorrilla 1 antiguo Hospital Militar",
+                  "Zorrilla 1",
+                  "997"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 130 Centro Comercial",
+                "synonyms": [
+                  "Zorrilla 130 Centro Comercial",
+                  "Zorrilla 130",
+                  "998"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "Paseo Zorrilla 133 La Rubia",
+                "synonyms": [
+                  "Zorrilla 133 La Rubia",
+                  "Zorrilla 133",
+                  "999"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "LINEA",
+          "values": [
+            {
+              "name": {
+                "value": "1",
+                "synonyms": [
+                  "linea 1",
+                  "el 1",
+                  "la linea 1"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "2",
+                "synonyms": [
+                  "linea 2",
+                  "el 2",
+                  "la linea 2"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "3",
+                "synonyms": [
+                  "linea 3",
+                  "el 3",
+                  "la linea 3"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "4",
+                "synonyms": [
+                  "linea 4",
+                  "el 4",
+                  "la linea 4"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "5",
+                "synonyms": [
+                  "linea 5",
+                  "el 5",
+                  "la linea 5"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "6",
+                "synonyms": [
+                  "linea 6",
+                  "el 6",
+                  "la linea 6"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "7",
+                "synonyms": [
+                  "linea 7",
+                  "el 7",
+                  "la linea 7"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "8",
+                "synonyms": [
+                  "linea 8",
+                  "el 8",
+                  "la linea 8"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "9",
+                "synonyms": [
+                  "linea 9",
+                  "el 9",
+                  "la linea 9"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "10",
+                "synonyms": [
+                  "linea 10",
+                  "el 10",
+                  "la linea 10"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "13",
+                "synonyms": [
+                  "linea 13",
+                  "el 13",
+                  "la linea 13"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "14",
+                "synonyms": [
+                  "linea 14",
+                  "el 14",
+                  "la linea 14"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "16",
+                "synonyms": [
+                  "linea 16",
+                  "el 16",
+                  "la linea 16"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "17",
+                "synonyms": [
+                  "linea 17",
+                  "el 17",
+                  "la linea 17"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "18",
+                "synonyms": [
+                  "linea 18",
+                  "el 18",
+                  "la linea 18"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "19",
+                "synonyms": [
+                  "linea 19",
+                  "el 19",
+                  "la linea 19"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "C1",
+                "synonyms": [
+                  "linea c1",
+                  "circular 1"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "C2",
+                "synonyms": [
+                  "linea c2",
+                  "circular 2"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "23",
+                "synonyms": [
+                  "linea 23",
+                  "el 23",
+                  "la linea 23"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "24",
+                "synonyms": [
+                  "linea 24",
+                  "el 24",
+                  "la linea 24"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "26",
+                "synonyms": [
+                  "linea 26",
+                  "el 26",
+                  "la linea 26"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "H",
+                "synonyms": [
+                  "linea h",
+                  "hospital"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "LP",
+                "synonyms": [
+                  "linea lp",
+                  "linea parquesol"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "LC",
+                "synonyms": [
+                  "linea lc",
+                  "linea covaresa"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "LD",
+                "synonyms": [
+                  "linea ld",
+                  "linea delicias"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "P1",
+                "synonyms": [
+                  "linea p1",
+                  "p 1"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "P2",
+                "synonyms": [
+                  "linea p2",
+                  "p 2"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "P3",
+                "synonyms": [
+                  "linea p3",
+                  "p 3"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "P6",
+                "synonyms": [
+                  "linea p6",
+                  "p 6"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "P7",
+                "synonyms": [
+                  "linea p7",
+                  "p 7"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "P13",
+                "synonyms": [
+                  "linea p13",
+                  "p 13"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "PSC1",
+                "synonyms": [
+                  "linea psc1",
+                  "PSC 1"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "PSC2",
+                "synonyms": [
+                  "linea psc2",
+                  "PSC 2"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "PSC3",
+                "synonyms": [
+                  "linea psc3",
+                  "PSC 3"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "B1",
+                "synonyms": [
+                  "linea b1",
+                  "buho 1"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "B2",
+                "synonyms": [
+                  "linea b2",
+                  "buho 2"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "B3",
+                "synonyms": [
+                  "linea b3",
+                  "buho 3"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "B4",
+                "synonyms": [
+                  "linea b4",
+                  "buho 4"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "B5",
+                "synonyms": [
+                  "linea b5",
+                  "buho 5"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "F1",
+                "synonyms": [
+                  "linea f1",
+                  "f 1"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "F2",
+                "synonyms": [
+                  "linea f2",
+                  "f 2"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "F3",
+                "synonyms": [
+                  "linea f3",
+                  "f 3"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "F4",
+                "synonyms": [
+                  "linea f4",
+                  "f 4"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "F5",
+                "synonyms": [
+                  "linea f5",
+                  "f 5"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "F6",
+                "synonyms": [
+                  "linea f6",
+                  "f 6"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "M1",
+                "synonyms": [
+                  "linea m1",
+                  "m 1"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "M2",
+                "synonyms": [
+                  "linea m2",
+                  "m 2"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "M3",
+                "synonyms": [
+                  "linea m3",
+                  "m 3"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "M4",
+                "synonyms": [
+                  "linea m4",
+                  "m 4"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "M5",
+                "synonyms": [
+                  "linea m5",
+                  "m 5"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "M6",
+                "synonyms": [
+                  "linea m6",
+                  "m 6"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "M7",
+                "synonyms": [
+                  "linea m7",
+                  "m 7"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "U1",
+                "synonyms": [
+                  "linea u1",
+                  "universidad 1"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "U8",
+                "synonyms": [
+                  "linea u8",
+                  "universidad 8"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

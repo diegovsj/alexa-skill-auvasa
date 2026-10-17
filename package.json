@@ -1,0 +1,31 @@
+{
+  "name": "alexa-skill-auvasa",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Skill de Alexa con la información de las paradas de autobús de AUVASA (Valladolid)",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "datos": "node tools/build-gtfs.mjs",
+    "datos:offline": "node tools/build-gtfs.mjs --offline",
+    "modelo": "node tools/build-interaction-model.mjs",
+    "iconos": "node tools/build-icons.mjs",
+    "preparar": "npm run datos && npm run modelo && npm run iconos",
+    "preparar:offline": "npm run datos:offline && npm run modelo && npm run iconos",
+    "simular": "node tools/simular.mjs",
+    "hospedada": "node tools/preparar-hospedada.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegovsj/alexa-skill-auvasa.git"
+  },
+  "homepage": "https://github.com/diegovsj/alexa-skill-auvasa#readme",
+  "bugs": {
+    "url": "https://github.com/diegovsj/alexa-skill-auvasa/issues"
+  },
+  "license": "MIT",
+  "author": "Diego"
+}

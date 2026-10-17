@@ -1,0 +1,30 @@
+AUVASA — avisos de autoría y licencias
+=======================================
+
+CÓDIGO
+------
+El código de este repositorio se distribuye bajo la licencia MIT
+(ver el archivo LICENSE).
+
+DATOS
+-----
+Los datos de transporte que consume la skill son propiedad de AUVASA
+(Autobuses Urbanos de Valladolid) y se publican bajo la licencia
+Creative Commons Attribution 3.0 España (CC BY 3.0 ES):
+
+    https://creativecommons.org/licenses/by/3.0/es/
+
+Al reutilizar esos datos debe citarse la autoría, por ejemplo:
+
+    Datos: AUVASA (Autobuses Urbanos de Valladolid), portal de datos
+    abiertos, CC BY 3.0 ES.
+
+Los ficheros de `lambda/data/*.json` son un derivado procesado de esos datos;
+por tanto, se aplica su misma licencia CC BY 3.0 ES.
+
+MARCAS
+------
+«AUVASA» y «Valladolid» se mencionan únicamente para identificar el servicio de
+transporte público cuyos datos abiertos se consultan. Este proyecto es una
+iniciativa independiente y no está afiliado, patrocinado ni respaldado por
+AUVASA, por el Ayuntamiento de Valladolid ni por Amazon.
